@@ -9,11 +9,11 @@ output:
     number_sections: true
 title: | 
         | Título
-        | Subtítulo
-        | Subtítulo
+        | 
+        | 
 author:
-- name: Nombre de el/la estudiante
-  affiliation: Afiliación, normalmente algo tal que "Estudiante, Universidad Autónoma de Santo Domingo (UASD)"
+- name: Melany Karina Ogando Matos
+  affiliation: Estudiante, Universidad Autónoma de Santo Domingo (UASD)
 abstract: "Resumen del manuscrito"
 keywords: "palabra clave 1, palabra clave 2"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
@@ -43,11 +43,11 @@ header-includes:
 
 # Metodología
 
-\ldots
+Aqui va la metodologia.
 
 # Resultados
 
-\ldots
+
 
 # Discusión
 
@@ -55,10 +55,11 @@ header-includes:
 
 # Información de soporte
 
-\ldots
+
+
 
 # *Script* reproducible
 
-\ldots
+
 
 # Referencias
