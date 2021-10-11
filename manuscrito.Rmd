@@ -39,7 +39,9 @@ header-includes:
 
 # Introducción
 
-\ldots
+Ahora estoy insertando bibliografia, si lo quiero entre parentesis [@hubbell1999light], y si lo quiero parte del texto @hubbell1999light.
+
+Para citar dos autores [@hubbell1999light,@sun2007fast]
 
 # Metodología
 
@@ -47,7 +49,7 @@ Aqui va la metodologia.
 
 # Resultados
 
-
+Ahora vamos a insertar imagen  
 
 # Discusión
 
