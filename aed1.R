@@ -64,5 +64,5 @@ abun_sp
 
 #' ### Un gráfico para el manuscrito
 #' Gráfico de mosaicos de la abundancia por especie por cuadros
-abun_sp_q <- crear_grafico_mosaico_de_mc(mc_chrys, tam_rotulo = 8)
+abun_sp_q <- crear_grafico_mosaico_de_mc(mc_chrys, tam_rotulo = 6)
 abun_sp_q
