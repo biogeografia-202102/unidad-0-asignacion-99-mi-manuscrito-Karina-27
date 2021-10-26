@@ -40,6 +40,17 @@ header-includes:
 
 # Introducción
 
+Conocer la dispersion y las formas de agrupamiento de los individuos de una especie, es necesario para su conservacion [@condit1996species]. Las especies no son las mismas en todos los lugares, y estos patrones de variación, en cada uno de los niveles de diversidad: genes, especies y ecosistemas, es el objeto de estudio de la biogeografía. Su objetivo es caracterizar la distribucion de las especies en la actualidad y la variacion geografica de la diversidad en términos de la interaccion de los organismos con su ambiente [@lomolino2017biogeography].
+Los patrones de biodiversidad son el resultado de la combinacion de los procesos internos de la comunidad de plantas y las condiciones externas [@sang2008vascular].
+La cantidad de nitrogeno en el suelo puede ser asumida como una limitante directa en la distribucion de las especies de plantas [@lange2013physiological].
+
+Similiridad es una medida simple de la similitud de especies y sus abundancias. Es convencional decir que es lo mismo alta diversidad con alta homogeneidad, lo que es equivalente a poca dominancia [@magurran2004measuring].
+
+Las especies de Chrysobalaneceae son utilizadas de maneras distintas para el tratamiento y como medicina de algunas enfermedades como la malaria, epilepsia, diarrea y diabetes [@feitosa2012chrysobalanaceae].
+Sus usos son frecuentes en la región africana y surámerica, donde son más abundantes [@feitosa2012chrysobalanaceae].
+Posee diferentes usos, como son: El aceite de sus frutos es usado en pinturas y varnices, tambien es uasda como material de construccion, combustible y carbón. Tambien es utilizada mezclada con arcilla para hacer vasijas de barro [@prance2014chrysobalanaceae].
+La familia Chrysobalanaceae es de distribucion pantropical, y cuenta con 18 géneros con 531 especies que se encuentra un 80% en el neotrópico.[@prance2014chrysobalanaceae, @bardon2013origin].
+
 # Metodología
 
 # Resultados
