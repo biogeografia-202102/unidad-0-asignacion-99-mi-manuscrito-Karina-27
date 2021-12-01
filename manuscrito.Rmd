@@ -56,7 +56,48 @@ Para realizar un estudio a fondo de la correlación entre esta familia y las var
 
 # Metodología
 
+## Obtención de los datos
 
+Los datos fueron obtenidos del censo realizado durante el 2010 por el Smithsonian Tropical Research Institute en la parcela permanente de Barro Colorado Island en el lago Gatún, Panamá [@Hubbell2010Forest]. En este censo, se contabilizaron todas las árboles con troncos de al menos 10mm de Diámetro de Altura de Pecho, y estos fueron identificados y marcados. Esta parcela cuenta con 50 hectáreas dividida en 50 cuadros de 1 hectárea cada una.
+
+![Parcela de 50-ha de Barro Colorado Island, Panamá\label{mapaBCIcuadros}](mapa_cuadros_panama.png){width = 80%}
+
+Los datos utilizados en esta investigación fueron administrados a través del repositorio @jose_ramon_martinez_batlle_2020_4402362. Estos datos continenen la matriz de comunidad y la matriz ambiental. En la matriz de comunidad se extrajeron los datos de la familia Chrysobalanaceae.  
+
+## Analisís estadístico
+
+<!-- Mencionar autor de la tecnica>
+<!-- Citar alguien mas que Broccard>
+<!-- Escribir en pasado>
+
+El analísis de agrupamiento
+Para el analisis de agrupamiento se tomaron en consideración cuatro técnicas: por enlace simple,por enlace completo, por enlace promedio (UPGMA) y por el método de Ward. En primer lugar se transformaron los datos de la matriz de comunidad y se calculó la distacia ecuclídea.Cuales seleccionaste por que parametro.
+
+Para conocer el patrón de organización de la familia Chrysobalanaceae y seleccionar el dendrograma que mejor explica las relaciones entre esta familia, se realizaron pruebas de distancia cofenética y anchura de siluetas para conocer el número de grupos. Por medio de Bootstrap multiescalar se revisaron los datos obtenidos en los métodos anteriores.
+
+Para evaluar la homogeneidad de promedios de las variables, se utilizará la prueba t student. Para así conocer si existe algún patron de agrupamiento relacionado con alguna variable ambiental.
+
+Además se realizó un analisis de especies indicadoras mediante la prueba de IndVal y un analisis de especies con preferencia por habitát mediante el coeficiente de correlación biserial puntual.
+
+Técnicas de Ordenación: Mencionar parametros
+Las técnicas de ordenación no restringidas utilizadas fueron: Análisis de componentes principales (PCA), Análisis de Correspondencia múltiple (MCA) y Análisis de corrdenadas principales (PCoA).
+
+Para la técnicas de ordenación restringida se utilizarán los métodos: Análisis de Redundancia (RDA) y Analisis de correspondencia canónica (CCA).
+
+La técnicas de ordenación son para detectar tendecias entre las especies de mi familia seleccionada y ver si se asocian con las variables ambientales.
+
+Analisis de Diversidad: Mencionar parametros
+Para el calculo de la estimacion de la riqueza y completitud de la muestra se utilizaron los enfoques de Chao, estimadores Jacknife y el método por Bootstrap.
+
+Se calcularon los números y ratios de Hill para el calculo de la diversidad Alpha y se midió la correlación con las variables ambientales.
+Para el calculo de la diversidad Beta se obtuvo la beta multiplicativa y se calculo las especies que contribuyen a esta diversidad.
+
+Ecología Espacial: Mencionar parametros
+Se utilizó una matriz tranformada a Hellinger y se calculó la vecindad. Mediante un correlograma se midió la autocorrelación espacial, utilizando las pruebas Mantel y el I de Moran.
+
+Esta prueba tiene como objetivo conocer si las especies muestran un patrón aglomerado, y conocer si se asocian con alguna variable. Además, de verificar si los modelos de distribución de especies predicen la ocurrencia de estas.
+
+Los análisis fueron realizados en la consola de RStudio [@RStudio] administrada por José Ramón Martínez Batlle.
 
 # Resultados
 
