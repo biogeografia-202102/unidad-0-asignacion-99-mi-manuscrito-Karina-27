@@ -66,18 +66,16 @@ Los datos utilizados en esta investigación fueron administrados a través del r
 
 ## Analisís estadístico
 
-<!-- Mencionar autor de la tecnica>
-<!-- Citar alguien mas que Broccard>
-<!-- Escribir en pasado>
+<!--
+Analisis de Agrupamiento
 
-El analísis de agrupamiento
-Para el analisis de agrupamiento se tomaron en consideración cuatro técnicas: por enlace simple,por enlace completo, por enlace promedio (UPGMA) y por el método de Ward. En primer lugar se transformaron los datos de la matriz de comunidad y se calculó la distacia ecuclídea.Cuales seleccionaste por que parametro.
+Para el analisis de agrupamiento se tomaron en consideración cuatro técnicas jeracquicas y aglomerativas: por enlace simple,por enlace completo, por enlace promedio (UPGMA) y por el método de Ward. En primer lugar se transformaron los datos de la matriz de comunidad y se calculó la distacia ecuclídea.Cuales seleccionaste por que parametro.
 
 Para conocer el patrón de organización de la familia Chrysobalanaceae y seleccionar el dendrograma que mejor explica las relaciones entre esta familia, se realizaron pruebas de distancia cofenética y anchura de siluetas para conocer el número de grupos. Por medio de Bootstrap multiescalar se revisaron los datos obtenidos en los métodos anteriores.
 
 Para evaluar la homogeneidad de promedios de las variables, se utilizará la prueba t student. Para así conocer si existe algún patron de agrupamiento relacionado con alguna variable ambiental.
 
-Además se realizó un analisis de especies indicadoras mediante la prueba de IndVal y un analisis de especies con preferencia por habitát mediante el coeficiente de correlación biserial puntual.
+Además se realizó un analisis de especies indicadoras mediante la prueba de IndVal y un analisis de especies con preferencia por habitát mediante el coeficiente de correlación biserial puntual (Phi).
 
 Técnicas de Ordenación: Mencionar parametros
 Las técnicas de ordenación no restringidas utilizadas fueron: Análisis de componentes principales (PCA), Análisis de Correspondencia múltiple (MCA) y Análisis de corrdenadas principales (PCoA).
@@ -101,7 +99,54 @@ Los análisis fueron realizados en la consola de RStudio [@RStudio] administrada
 
 # Resultados
 
+#Analisis de Agrupamiento
+
+La familia Chrysoblanaceae cuenta con un total de 4,821 individuos y se encuentra representada en BCI por cuatro especies: *Hirtella americana*, *Hirtella triandra*, *Licania platypus* y *Licania hypoeluca*. La especie mas abundante fuer *Hirtella triandra* con un total de 4,408 individuos, lo que representa un 90% de la representacion de la familia en BCI.
+Los sitios con mayor valores de abundancia son el 16, 21, 26, 48 y y 49.
+
+<!--  Insertar cuadros de abundancia
+
+Las variables ambientales o atributos que mostraron relacion con la abundancia de especies fueron Fosforo (-0.59) y Aluminio (-0.48), y Nitrogeno min., Potasio, Hierro, Cobre y Calcio en aproximadamente (0.51).
+La riqueza de mi familia mostro relacion en un 0.38 con el N. min.
+*Licania platypus* muestra una relacion de 0.51 con *Hirtella triandra*.
+Los valores bajos de geomorfologia de hombrera concuerdan con los sitios de mayor abundancia.
+
+<!-- Insertar grafico de disimiliridad de Jaccard y grafico de similaridad de especies
+
+<!-- Los cuadros (o quadrats) de 1 hectárea, ¿se organizan en grupos discontinuos según la composición de las especies de mi familia seleccionada?
+
+Los analisis de agrupamiento por medio de las tecnicas UPGMA, Ward y Complete dieron dos grupos consistentes, un grupo formado por los sitios (24, 25, 29 y 30) y un grupo formado por el resto. Sin embargo, los dendrogramas escogidos fueron los creados por el metodo complete y por el metodo Ward. La anchura de silueta obtenida fue de dos.
+<!-- Porque escogiste esos dos metodos.
+
+<!-- Si existe algún patrón, ¿es consistente con alguna variable ambiental/atributo?
+El analisis de correlacion del dendrograma generado por UPGMA y las variables ambientales mostro relaciones significativas con la elevacion media, geomorfologia de hombrera, heterogeneidad ambiental y N.
+En el analisis de Ward para dos grupos las variables que mostraron relacion significativa fueron: Geomorflogia de hombrera, heterogeneidad ambiental y Nitrogeno.
+Para el analisis de correlacion con el dendrograma generado por Complete las variables relacionadas fueron: Elevacion media, geomorfologia de hombrera, Magnesio y Nitrogeno.
+Podemos concluir que las variables que muestran mayor relacion con los patrones de agrupamiento de sitios son geomorfologia de hombrera y Nitrogeno.
+
+<!-- ¿Hay especies indicadoras o con preferencia por determinadas condiciones ambientales/atributos?
+
+Licania hypoeluca muestra ser una especie indcadora para el grupo 2 (4 sitios), tanto en UPGMA por Indval como por Phi. Al igual que en Complete. Debido a la diferencia de la cantidad de los sitios en los grupos, la prueba Inval se realizo con grupos igualados.
+
+Tecnicas de Ordenacion
+En un espacio bidimensional, ¿existen tendencias apreciables de ordenación de las especies de mi familia seleccionada?
+En el Biplot de PCA los sitios 24, 25, 29 y 30 (el grupo 2), tiene relacion con N, P y pH en la distacia euclidea, y para datos transformados con P y N.
+Segun el PCA realizado con los datos de la comunidad, ninguna especie es homogenea en la contribucion de los componentes. 
+El grupo 2, los sitios 24, 25, 29 y 30, muestran relacion con la presencia de Licania hypoeluca segun PCA, y quizas se relaciona con la presencia de aluminio.
+El grupo 2 ademas muestra relacion con la elevacion media y geomorfologia de llanura, segun PCA.
+En el analisis de PCA, las variables de suelo muestran relacion con las especies.
+El analisis de correspondencia de CHI cuadrado mostro resultados similares, de la relacion entre Licania hypoeluca con los sitios 24, 25, 29 y 30.
+
+
+<!-- Rehacer PCA para variables asociadas.
+
+Si existen tendencias de ordenación, ¿se asocian éstas con variables ambientales/atributos?
+
 # Discusión
+¿Porque es Hirtella triandra es mucho mas abundante que las demas?
+Analisis de agrupamiento: Porque el grupo de 4 sitios es consistente.
+
+
 
 # Agradecimientos
 
