@@ -37,7 +37,7 @@ bci_env_grid %>% tibble
 #' 
 beta_multiplicativa <- calcular_beta_multiplicativa(
   mc = mi_fam,
-  orden = 0:49)
+  orden = 0:20)
 beta_multiplicativa
 #' 
 #' Notar que, para esta matriz de comunidad, la diversidad beta multiplicativa disminuye en escenarios donde se le otorga más importancia a la equidad que a la riqueza. En los datos de mi familia, y en general en cualquier conjunto de datos, esto puede atribuirse a la gran similaridad global entre sitios; en el contexto actual, con composiciones de especies autocorrelacionadas espacialmente, el reemplazo es bajo.

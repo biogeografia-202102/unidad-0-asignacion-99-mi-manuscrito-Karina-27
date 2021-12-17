@@ -27,12 +27,12 @@ load('biodata/Chrysobalanaceae.Rdata')
 load('biodata/matriz_ambiental.Rdata')
 mi_fam <- mc_chrys
 bci_env_grid %>% tibble
-grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
-table(grupos_upgma_k2)
-grupos_ward_k3 <- readRDS('grupos_ward_k3.RDS')
-table(grupos_ward_k3)
-grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
-table(grupos_compl_k2)
+#' grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
+#' table(grupos_upgma_k2)
+grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
+table(grupos_ward_k2)
+#' grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
+#' table(grupos_compl_k2)
 #' 
 #' ## Diversidad alpha
 #' 
@@ -138,7 +138,7 @@ log(5)
 #' **Índices, entropías, equidades, ratios**
 #' 
 (indices <- alpha_div(mi_fam))
-#Para sitios con mas de una especies
+#Para sitios con mas de una especie
 indices_sitios <- indices[-c(6, 7, 34, 38, 39),]
 pairs(indices[-7],
       lower.panel = panel.smooth,
@@ -263,19 +263,19 @@ mi_fam_combinada_chao$no_asintoticos_rarefaccion_extrapolacion_grafico
 #' 
 #' #' Generar matriz de comunidad agrupada según el método de Ward (tres grupos), procedente de pasos previos (ver scripts de análisis de agrupamiento).
 #' 
-mi_fam_k3 <- mi_fam %>%
-  mutate(g=grupos_ward_k3) %>%
+mi_fam_k2 <- mi_fam %>%
+  mutate(g=grupos_ward_k2) %>%
   group_by(g) %>%
   summarise_all(sum) %>%
   select(-g) %>% 
   data.frame
-mi_fam_k3 %>% rowSums %>% sort
-mi_fam_k3_chao <- estimacion_riqueza_chao(
-  mc = mi_fam_k3,
+mi_fam_k2 %>% rowSums %>% sort
+mi_fam_k2_chao <- estimacion_riqueza_chao(
+  mc = mi_fam_k2,
   n_raras = 22)
-mi_fam_k3_chao$asintoticos_estimacion
-mi_fam_k3_chao$no_asintoticos_rarefaccion_extrapolacion
-mi_fam_k3_chao$no_asintoticos_rarefaccion_extrapolacion_grafico
+mi_fam_k2_chao$asintoticos_estimacion
+mi_fam_k2_chao$no_asintoticos_rarefaccion_extrapolacion
+mi_fam_k2_chao$no_asintoticos_rarefaccion_extrapolacion_grafico
 #'
 #' #' Generar matriz de comunidad agrupada según el método de UPGMA (dos grupos), procedente de pasos previos (ver scripts de análisis de agrupamiento).
 #' 

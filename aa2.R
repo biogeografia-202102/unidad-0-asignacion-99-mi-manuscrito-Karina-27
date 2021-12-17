@@ -56,7 +56,6 @@ lista_cl <- list(
   cl_complete = hclust(mi_fam_norm_d, method = 'complete'),
   cl_ward = hclust(mi_fam_norm_d, method = 'ward.D2')
 )
-
 #' 
 #' Un plot en panel 2x2 ayuda a visualizarlos todos de manera conjunta. En tu caso, observa y compara todos los dendrogramas:
 #' 

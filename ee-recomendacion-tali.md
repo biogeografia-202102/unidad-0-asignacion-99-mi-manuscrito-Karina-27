@@ -110,14 +110,14 @@ library(vegan)
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+    ## ── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 
     ## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
     ## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
     ## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
     ## ✔ readr   1.3.1     ✔ forcats 0.4.0
 
-    ## ── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
@@ -905,12 +905,12 @@ mi_fam_sin_tendencia_d <- dist(mi_fam_sin_tendencia)
     ## mantel.correlog(D.eco = mi_fam_sin_tendencia_d, XY = bci_xy,      nperm = 999) 
     ## 
     ##         class.index     n.dist Mantel.cor Pr(Mantel) Pr(corrected)   
-    ## D.cl.1   136.870241 144.000000   0.035522      0.082         0.082 . 
-    ## D.cl.2   210.610723 376.000000  -0.064801      0.018         0.036 * 
+    ## D.cl.1   136.870241 144.000000   0.035522      0.096         0.096 . 
+    ## D.cl.2   210.610723 376.000000  -0.064801      0.020         0.040 * 
     ## D.cl.3   284.351204 390.000000  -0.125011      0.001         0.003 **
-    ## D.cl.4   358.091686 148.000000  -0.029774      0.107         0.164   
-    ## D.cl.5   431.832168 372.000000  -0.093174      0.004         0.016 * 
-    ## D.cl.6   505.572649 266.000000  -0.013957      0.262         0.262   
+    ## D.cl.4   358.091686 148.000000  -0.029774      0.112         0.192   
+    ## D.cl.5   431.832168 372.000000  -0.093174      0.003         0.012 * 
+    ## D.cl.6   505.572649 266.000000  -0.013957      0.269         0.288   
     ## D.cl.7   579.313131 168.000000         NA         NA            NA   
     ## D.cl.8   653.053613 100.000000         NA         NA            NA   
     ## D.cl.9   726.794094 154.000000         NA         NA            NA   
@@ -951,7 +951,7 @@ Autocorrelación espacial por medio de pruebas de permutación para el I de Mora
     ## weights: pesos_b  
     ## number of simulations + 1: 10000 
     ## 
-    ## statistic = 0.15242, observed rank = 9794, p-value = 0.0206
+    ## statistic = 0.15242, observed rank = 9805, p-value = 0.0195
     ## alternative hypothesis: greater
     ## 
     ## 
@@ -963,7 +963,7 @@ Autocorrelación espacial por medio de pruebas de permutación para el I de Mora
     ## weights: pesos_b  
     ## number of simulations + 1: 10000 
     ## 
-    ## statistic = 0.28361, observed rank = 9991, p-value = 9e-04
+    ## statistic = 0.28361, observed rank = 9992, p-value = 8e-04
     ## alternative hypothesis: greater
     ## 
     ## 
@@ -987,7 +987,7 @@ Autocorrelación espacial por medio de pruebas de permutación para el I de Mora
     ## weights: pesos_b  
     ## number of simulations + 1: 10000 
     ## 
-    ## statistic = 0.1553, observed rank = 9847, p-value = 0.0153
+    ## statistic = 0.1553, observed rank = 9849, p-value = 0.0151
     ## alternative hypothesis: greater
 
 ### I de Moran local

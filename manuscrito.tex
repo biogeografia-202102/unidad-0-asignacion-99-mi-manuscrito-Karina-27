@@ -38,6 +38,7 @@
 
 \setcounter{secnumdepth}{3}
 
+\usepackage{longtable,booktabs}
 
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -49,7 +50,9 @@
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
-\title{Título\\[2\baselineskip]  }
+\title{Técnicas de Ecología numérica aplicadas a la comunidad de
+Chrysobalanaceae representada en la parcela permanente de Barro Colorado
+Island (BCI)\\[2\baselineskip]  }
 
 
 
@@ -100,8 +103,11 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={Melany Karina Ogando Matos (Estudiante, Universidad Autónoma de Santo Domingo (UASD))},
-             pdfkeywords = {palabra clave 1, palabra clave 2},  
-            pdftitle={Título\\[2\baselineskip]},
+             pdfkeywords = {ecología numérica, BCI, Chrysobalanaceae, correlación, agrupamiento,
+biodiversidad},  
+            pdftitle={Técnicas de Ecología numérica aplicadas a la comunidad de
+Chrysobalanaceae representada en la parcela permanente de Barro Colorado
+Island (BCI)\\[2\baselineskip]},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
@@ -159,10 +165,25 @@
 
     \vskip 8.5pt % \small 
 
-\noindent Resumen del manuscrito
+\noindent Los patrones de dispersión y agrupamiento de las especies revelan
+información acerca de como estas interactúan con el medio ambiente. El
+objetivo de esta investigación es conocer el patrón de distribución de
+las especies de Chrysobalanaceae que se encuentran representadas en BCI
+utilizando técnicas de ecología númerica. Los métodos realizados
+incluyen análisis de agrupamiento, técnicas de ordenación, medidas de la
+diversidad y análisis de ecología espacial. Los resultados demostraron
+que existe una correlación espacial inducida por las variables
+ambientales. \emph{Licania }hypoleuca demostró ser una especie
+indicadora para uno de los grupos formado por el análisis de
+agrupamiento. Como se trata de datos censales se demostró la completitud
+de la muestra por medio de estimadores de riqueza. Los sitios de BCI se
+encuentran altamente correlacionados en función de las variables
+ambientales, por lo que la riqueza por sitio es lo que caracteriza cada
+uno de estos.
 
 
-\vskip 8.5pt \noindent \emph{Keywords}: palabra clave 1, palabra clave 2 \par
+\vskip 8.5pt \noindent \emph{Keywords}: ecología numérica, BCI, Chrysobalanaceae, correlación, agrupamiento,
+biodiversidad \par
 
     \hbox{\vrule height .2pt width 39.14pc}
 
@@ -303,18 +324,46 @@ variables numéricas y escalándolas a puntuaciones Z para generar una
 matriz de correlaciones; para las variables de la matriz de comunidad
 los datos fueron transformados basados en Hellinger. El análisis de
 correspondencia (CA) se realizó calculando las distancias de los objetos
-en CHI cuadradro. Y por último, se realizó un análisis de coordenadas
-principales (PCoA) con promedios ponderados calculando la distancia
-Bray-curtis entre los objetos.
+en CHI cuadradro. La técnicas de ordenación restringida utilizada fue un
+análisis de correspondencia canónica (CCA).
 
-\textless{}!-- Las técnicas de ordenación restringida utilizadas fueron
-Análisis de redundancia (RDA) utilizando una matriz transformada a
-Hellinger y análisis de correspondencia canónica (CCA).
+Para el análisis de la diversidad Alpha se calcularon los números de
+diversidad Alpha y los ratios de Hill como se encuentra explicado por
+Krebs (2014) y Borcard et al. (2011). Los sitios que poseían solo una
+especie fueron excluidos. Posteriormente, se realizó un análisis de
+correlacion de pearson con las variables ambientales seleccionadas, para
+conocer si existe asociación con la diversidad Alpha. Con el objetivo de
+medir la diversidad de especies de una localidad cuando solo se tienen
+una muestra de la riqueza total de la comunidad, se utilizó el enfoque
+asintótico no paramétrico de Chao. La diversidad beta calculada con los
+datos de presencia/ausencia de las especies nos dice cúantas más
+especies están presentes en toda el área que en un sitio individual
+(Borcard et al., 2011). La contribución local de los sitios y las
+especies a la diversidad beta fue realizada siguiendo los procedimientos
+indicados por Borcard et al. (2011).
+
+Uno de los fundamentos de la ecología espacial es comprender como el
+espacio impacta en la estructura de la comunidad (Cantrell, Cosner, \&
+Ruan, 2010). La autocorrelación espacial es una medida de la similaridad
+o disimilaridad de dos sitios cercanos con relación a los pares
+seleccionados aleatoriamente {[}borcard2011numerical{]}. El análisis de
+correlacción espacial se realizó siguiendo la metodología descrita por
+Batlle (2020). En primer lugar, los datos de la matriz de comunidad
+fueron transformados midiendo la distancia Hellinger, y se generó la
+vecindad para la matriz ambiental. Entonces, la autocorrelación de las
+especies y las variables ambientales se midió a partir de un
+correlograma. Posteriormente, se eliminaron las tendencias espaciales de
+autocorrelación transformando la matriz de comunidad Hellinger en una
+matriz de posiciones XY, para luego realizar una prueba Mantel de
+correlograma. De igual forma, se evaluó la autocorrelación espacial por
+I de Moran sin tomar en cuenta las tendencias espaciales.
 
 Los análisis fueron realizados en la consola de RStudio (R Core Team,
 2020) administrada por José Ramón Martínez Batlle. Para acceder a la
 consola se realizó mediante el navegador Google Chrome en una
-computadora personal de prestaciones básicas.
+computadora personal de prestaciones básicas. Los paquetes utilizados
+para los diferentes análisis fueron Oksanen et al. (2019), R. Kindt \&
+Coe (2005), Wickham (2017) y De Caceres \& Legendre (2009).
 
 \section{Resultados}\label{resultados}
 
@@ -326,13 +375,19 @@ abundante fue \emph{Hirtella triandra}, que representa un 90\% de la
 composición de la familia en BCI.
 
 {[}Tabla de abundancias de las especies de Chrysobalanaceae en
-BCI\label{tab:tabla_abun}{]} \textbar{} Especie \textbar{} Abundancia
-\textbar{}
-\textbar{}----------------------\textbar{}------------\textbar{}
-\textbar{} \emph{Hirtella triandra} \textbar{} 4408 \textbar{}
-\textbar{} \emph{Licania platypus} \textbar{} 251 \textbar{} \textbar{}
-\emph{Licania hypoleuca} \textbar{} 141 \textbar{} \textbar{}
-\emph{Hirtella americana} \textbar{} 21 \textbar{}
+BCI\label{tab:tabla_abun}{]}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Especie & Abundancia\tabularnewline
+\midrule
+\endhead
+\emph{Hirtella triandra} & 4408\tabularnewline
+\emph{Licania platypus} & 251\tabularnewline
+\emph{Licania hypoleuca} & 141\tabularnewline
+\emph{Hirtella americana} & 21\tabularnewline
+\bottomrule
+\end{longtable}
 
 Los análisis de agrupamiento por medio de las cuatro técnicas mostraron
 grupos similares, con un grupo consistente en todas las técnicas formado
@@ -355,7 +410,7 @@ formado por 4 sitios \ref{mapagrupos}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.80000\textwidth]{Clusters.png}
+\includegraphics[width=1.00000\textwidth]{Clusters.png}
 \caption{Dendrogramas generados por análisis de
 agrupamiento\label{clusters}}
 \end{figure}
@@ -377,29 +432,83 @@ hábitats dio como resultado que \emph{Licania hypoleuca} parece ser una
 especie indicadora para el grupo 2 (formado por los sitios 24, 25, 29 y
 30).
 
-Los técnicas de ordenación realizadas mediante análisis de componentes
-principales para datos de variables ambientales dio como resultado que
-los sitios según las variables de suelo se asocian en dos grupos
-distintivos, sin embargo estos grupos no se corresponden con los
-generados por medio del análisis de agrupamiento.
+Mediante el cálculo de los factores de inflación (VIF) de las variables
+de suelo y ambientales se escogió un grupo reducido de variables que
+tuvieran poca correlación entre ellas con un VIF menor de 10. Las
+variables escogidos fueron Aluminio, Cobre, Manganeso, Nitrógeno, pH,
+Nitrógeno mineralizado, elevación media, heterogeneidad ambiental y
+orientación media.
 
-\textless{}!-- Insertar grafico de variables de suelo grupos y variables
-de de suelo por complete grupos.
+El análisis de componentes principales para los datos de variables
+ambientales seleccionadas dio como resultado que los sitios se asocian
+en dos grupos distintivos, sin embargo estos grupos no se corresponden
+con los generados por medio del análisis de agrupamiento por enlace
+completo (\ref{pcagruop}).
 
-\textless{}!-- El análisis de componentes principales aplicado a la
-matriz de comunidad muestra la relación de \emph{Licania hypoleuca} con
-los sitios del grupo 2 del análisis de agrupamiento generado por enlace
-completo, al igual que el análisis de correspondecia. Esta especie
-parece asociarse con la presencia de Aluminio o Manganeso (Verificar).
-\textless{}!-- El biplot generado por PCA señala que los sitios del
-grupo 2 tienen una relación con las variables ambientales (las que
-tengan 3).
+\includegraphics{PCA_porgrupos.png}\{widtht = 80\%\}
 
-\textless{}!-- Insertar grafico de PCA para datos de comunidad
+El análisis de componentes principales (PCA) aplicado a la matriz de
+comunidad muestra la relación de \emph{Licania hypoleuca} con los sitios
+del grupo 2 del análisis de agrupamiento generado por enlace completo
+\ref{pcaespecies}, al igual que en el análisis de correspondecia. Esta
+especie parece asociarse de manera inversa con la abundancia de
+Manganeso. Las especies \emph{Hirtella triandra} e \emph{Hirtella
+americana} presentan correlación inversa, pues los vectores se muestran
+en direcciones completamente opuestas.
 
-Los resultados del ánalisis de coordenadas principales (PCoA) con
-promedios ponderados no mostró resultados convincentes, por lo que
-fueron excluidos del estudio.
+\includegraphics{PCA_especies.png}\{widtht = 80\%\}
+
+Los resultados del análisis de correspondencia canónica explican un 47\%
+de los datos y en la grafica se puede verificar que \emph{Hirtella
+triandra} es la especie con mayor abundancia, pues se encuentra en el
+centro del gráfico. También se muestra que \emph{Licania platypus} se
+encuentra muy correlacionada con la abundancia de nitrógeno mineralizado
+(\ref{triplotrda}).
+
+\includegraphics{triplotRDA.png}\{widtht = 80\%\}
+
+Las variables ambientales Magnesio, Zinc, Nitrógeno mineralizado y
+geomorfología de interfluvio mostraron relación con los números de Hill.
+Mientras que pH y Nitrógeno parecen estar correlacionadas con la equidad
+de Pielou (\ref{diversidadalpha}). El trabajo de muestreo realizado en
+BCI con relación a la familia Chrysobalanaceae se estima que representa
+un 100\% de completitud de la muestra, según los estimadores de Chao
+\ref{extrapolacion}, por lo que podemos afirmar que esta familia se
+encuentra muy bien representada en BCI.
+
+\includegraphics{diversidadalpha.png}\{widtht = 80\%\}
+
+\includegraphics{Extrapolacion_mifamilia.png}\{widtht = 80\%\}
+
+Sin embargo, al realizar la estimación de la riqueza por medio de los
+estimadores de Chao para los grupos generados en el análisis de
+agrupamiento, se estima que el grupo 1 se encuentra representado en un
+100\%, pero para el grupo 2 es necesario aumentar el esfuerzo de
+muestreo. Esto puede deberse a la desigualdad del número de sitios en
+los grupos.
+
+La diversidad beta multiplicativa disminuye mientras aumenta la
+importancia de la abundancia más que la riqueza, esto se debe a la
+autocorrelación espacial de los sitios, y demuestra que la diversidad de
+la comunidad está marcada por la presencia de especies indicadoras. Las
+especies que muestran contribución a la diversidad beta son
+\emph{Licania hypoleuca} y \emph{Licania platypus}, mientras que ninguno
+de los sitios resultó como contribuyente.
+
+Mediante la prueba de correlograma las variables Boro, Calcio, Magnesio,
+Zinc, Nitrógeno, pH y Nitrógeno mineralizado mostraron correlación en
+múltiples órdenes (\ref{correlograma}). La prueba Mantel sin tendencias
+de autocorrelación muestra que en los residuos la correlación no es
+significativa, por lo que parece que hay una dependencia espacial
+inducida por las variables ambientales. El I de moran aplicado a la
+matriz sin tendencia espacial dio como resultado que \emph{Licania
+hypoleuca} e \emph{Hirtella triandra} se encuentran en un patrón
+aglomerativo (\textbackslash{}ref\{lisamaps). Las variable que muestra
+un patrón aglomerativo común es la elevación media.
+
+\includegraphics{correlogramavariables.png}\{widtht = 80\%\}
+
+\includegraphics{clusterlisaespecies.png}\{widtht = 80\%\}
 
 \section{Discusión}\label{discusiuxf3n}
 
@@ -408,10 +517,35 @@ parece organizarse en patrones discontinuos, aunque los análisis de
 agrupamiento muestran un grupo formado por los sitios 24, 25, 29 y 30
 que se caracteriza por la abundancia de \emph{Licania hypoleuca}.
 
-\textless{}!-- Porque Hirtella triandra es mas abundante que las demas.
-Porque el grupo de 4 sitios es consistente.
+Las técnicas de análisis de ordenación al comparar sitios y especies
+demuestra, al igual que el análisis de agrupamiento, que los sitios del
+grupo 2 se encuentran correlacionados con la abundancia de \emph{Licania
+hypoleuca}. Esta tendencia de ordenación parece asociarse de manera
+inversa con la abundancia de Manganeso, además este análisis muestra que
+la abundancia de \emph{Licania platypus} se correlaciona con el
+nitrógeno mineralizado.
+
+Debido a que el método de muestreo utilizado para generar la base de
+datos usada en esta investigación se trata de un censo, es por esto que
+el análisis de estimación de riqueza muestra una alta completitud de la
+muestra. Las especies raras son el mayor contribuyente a la diversidad
+beta de la comunidad.
+
+Los datos parecen mostrar una correlación espacial inducida alta. Sin
+embargo, al general los mapas Lisa las especies \emph{Licania hypoleuca}
+e \emph{Hirtella triandra} solo parecen mostrar un patrón aglomerado con
+respecto a la orientación media.
+
+Se recomienda aplicar otras técnicas de ecología numérica a estos datos
+para comparar los resultados de la variables selecionadas, y verificar
+los modelos de agrupamiento obtenidos además de como se relacionan con
+las variables ambientales.
 
 \section{Agradecimientos}\label{agradecimientos}
+
+Agradezco al profesor José Martínez Batlle por sus enseñanzas y su apoyo
+en el análisis de esta investigación. También al Smithsonian Tropical
+Research Institute por la obtención y el suministro de los datos.
 
 \section{Información de soporte}\label{informaciuxf3n-de-soporte}
 
@@ -437,6 +571,10 @@ Long coding sessions (Version v0.0.0.9000).
 Borcard, D., Gillet, F., Legendre, P., \& others. (2011).
 \emph{Numerical ecology with r} (Vol. 2). Springer.
 
+\hypertarget{ref-cantrell2010spatial}{}
+Cantrell, R. S., Cosner, C., \& Ruan, S. (2010). \emph{Spatial ecology}.
+CRC Press.
+
 \hypertarget{ref-condit1998tropical}{}
 Condit, R. (1998). \emph{Tropical forest census plots: Methods and
 results from barro colorado island, panama and a comparison with other
@@ -451,6 +589,11 @@ three 50-ha plots. \emph{Journal of Ecology}, 549--562.
 \hypertarget{ref-croat1978flora}{}
 Croat, T. B. (1978). \emph{Flora of barro colorado island}. Stanford
 University Press.
+
+\hypertarget{ref-indicspeciesR}{}
+De Caceres, M., \& Legendre, P. (2009). Associations between species and
+groups of sites: Indices and statistical inference. In \emph{Ecology}.
+Retrieved from \url{http://sites.google.com/site/miqueldecaceres/}
 
 \hypertarget{ref-feitosa2012chrysobalanaceae}{}
 Feitosa, E. A., Xavier, H. S., \& Randau, K. P. (2012).
@@ -477,6 +620,12 @@ Hubbell, S., Condit, R., \& Foster, R. (2010). Forest census plot on
 barro colorado island. Retrieved November 30),, from
 \url{http://ctfs.si.edu/webatlas/datasets/bci/}
 
+\hypertarget{ref-biodiversityR}{}
+Kindt, R., \& Coe, R. (2005). \emph{Tree diversity analysis. a manual
+and software for common statistical methods for ecological and
+biodiversity studies}. Retrieved from
+\url{http://www.worldagroforestry.org/output/tree-diversity-analysis}
+
 \hypertarget{ref-krebs1999ecological}{}
 Krebs, C. J. (2014). \emph{Ecological methodology} (3rd ed.).
 
@@ -502,6 +651,11 @@ Lomolino, M. V., Riddle, B. R., Whittaker, R. J., \& Brown, J. H.
 Magurran, A. (2004). Measuring biological diversity. 2004. \emph{Malden:
 Blackwell}.
 
+\hypertarget{ref-veganR}{}
+Oksanen, J., Blanchet, F. G., Friendly, M., Kindt, R., Legendre, P.,
+McGlinn, D., \ldots{} Wagner, H. (2019). \emph{Vegan: Community ecology
+package}. Retrieved from \url{https://CRAN.R-project.org/package=vegan}
+
 \hypertarget{ref-prance2014chrysobalanaceae}{}
 Prance, G. (2014). Chrysobalanaceae. In \emph{Flowering plants.
 eudicots} (pp. 19--28). Springer.
@@ -525,6 +679,11 @@ conditions in the changbaishan nature reserve, northeastern china. In
 Sothers, C., Prance, G. T., Buerki, S., De Kok, R., \& Chase, M. W.
 (2014). Taxonomic novelties in neotropical chrysobalanaceae: Towards a
 monophyletic couepia. \emph{Phytotaxa}, \emph{172}(2), 176--200.
+
+\hypertarget{ref-tidyverseR}{}
+Wickham, H. (2017). \emph{Tidyverse: Easily install and load the
+'tidyverse'}. Retrieved from
+\url{https://CRAN.R-project.org/package=tidyverse}
 
 
 
