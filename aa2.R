@@ -52,11 +52,16 @@ lista_cl <- list(
   cl_upgma = hclust(mi_fam_norm_d, method = 'average'),
   cl_ward = hclust(mi_fam_norm_d, method = 'ward.D2')
 )
+lista_cl <- list(
+  cl_complete = hclust(mi_fam_norm_d, method = 'complete'),
+  cl_ward = hclust(mi_fam_norm_d, method = 'ward.D2')
+)
+
 #' 
 #' Un plot en panel 2x2 ayuda a visualizarlos todos de manera conjunta. En tu caso, observa y compara todos los dendrogramas:
 #' 
-par(mfrow = c(2,2))
-invisible(map(names(lista_cl), function(x) plot(lista_cl[[x]], main = x, hang = -1)))
+par(mfrow = c(1,2))
+invisible(map(names(lista_cl), function(x) plot(lista_cl[[x]], main = x, hang = -1, cex.lab = 1)))
 par(mfrow = c(1,1))
 #' 
 #' En mi caso, exceptuando el dendrograma generado por medio del enlace simple, detecto al menos 2 grupos consistentes (integrados por múltiples posibles subgrupos), los cuales mencionaré usando los identificadores de sitios:
@@ -112,7 +117,7 @@ u_dend_reord <- reorder.hclust(lista_cl$cl_upgma, mi_fam_norm_d)
 plot(u_dend_reord, hang = -1)
 rect.hclust(
   tree = u_dend_reord,
-  k = anch_sil_upgma$n_grupos_optimo + 1)
+  k = anch_sil_upgma$n_grupos_optimo)
 #' 
 #' Ahora compararé el dendrograma con el mapa de calor en un mismo gráfico, colocando los dendrogramas en los márgenes del gráfico. Verificaré si el número de grupos hace sentido, recordando los grupos que inicialmente identifiqué.
 #' 
@@ -290,3 +295,27 @@ saveRDS(grupos_compl_k2, 'grupos_compl_k2.RDS')
 #' Evita usar este, y cualquier otro procedimiento, de manera mecánica. En tu caso, quizá tengas que cortar tus dendrogramas en más o menos grupos de sitios. También podría resultar que alguno de dichos métodos, o ambos, sean irrelevante para tu caso, por lo que probablemente tendrás que elegir otro que haga sentido ecológico a tus datos (por ejemplo, *complete*).
 #' 
 #' En el próximo *script*, aprenderás a comparar este resultado con las variables ambientales. También podrás evaluar cómo se distribuyen los grupos de sitios en un mapa, usando las herramientas del paquete `mapview`.
+#' 
+#' GENERAR GRAFICO DE CLUSTERS
+par(mfrow = c(1,2))
+anch_sil_ward <- calcular_anchuras_siluetas(
+  mc_orig = mi_fam, 
+  distancias = mi_fam_norm_d, 
+  cluster = lista_cl$cl_ward)
+anch_sil_ward
+w_dend_reord <- reorder.hclust(lista_cl$cl_ward, mi_fam_norm_d)
+plot(w_dend_reord, hang = -1)
+rect.hclust(
+  tree = w_dend_reord,
+  k = anch_sil_ward$n_grupos_optimo)
+anch_sil_compl <- calcular_anchuras_siluetas(
+  mc_orig = mi_fam, 
+  distancias = mi_fam_norm_d, 
+  cluster = lista_cl$cl_complete)
+anch_sil_compl
+w_dend_reord <- reorder.hclust(lista_cl$cl_complete, mi_fam_norm_d)
+plot(w_dend_reord, hang = -1)
+rect.hclust(
+  tree = w_dend_reord,
+  k = anch_sil_compl$n_grupos_optimo)
+par(mfrow = c(1,1))

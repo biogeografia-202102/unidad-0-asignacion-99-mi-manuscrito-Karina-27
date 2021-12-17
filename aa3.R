@@ -21,10 +21,10 @@ source('biodata/funciones.R')
 #' 
 load('biodata/Chrysobalanaceae.Rdata')
 load('biodata/matriz_ambiental.Rdata')
-grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
-table(grupos_upgma_k2) #Importante, tener en cuenta los desiguales tamaños de los grupos
-grupos_ward_k3 <- readRDS('grupos_ward_k3.RDS')
-table(grupos_ward_k3)
+#grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
+#table(grupos_upgma_k2) #Importante, tener en cuenta los desiguales tamaños de los grupos
+#grupos_ward_k3 <- readRDS('grupos_ward_k3.RDS')
+#table(grupos_ward_k3)
 grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
 table(grupos_ward_k2)
 grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
@@ -227,7 +227,7 @@ mapa_ward_k2 <- mapView(
   leaflet::setView(
     lng = -79.85136,
     lat = 9.15097,
-    zoom = 15)
+    zoom = 16)
 mapa_ward_k2
 mapa_ward_k2 %>% mapshot(
   file = 'mapa_ward_k2.png', 
@@ -295,12 +295,12 @@ mapa_compl_k2 %>% mapshot(
 #' 
 mapa_heterogeneidad_ambiental <- mapView(
   bci_env_grid,
-  layer.name = 'Manganeso',
+  layer.name = 'OM',
   alpha.regions = 0.6,
   map.types = 'OpenTopoMap',
   legend = T,
   col.regions = rojo,
-  zcol = 'Mn') %>%
+  zcol = 'orientacion_media') %>%
   addStaticLabels(label = bci_env_grid$id) %>% 
   leaflet::setView(
     lng = -79.85136,

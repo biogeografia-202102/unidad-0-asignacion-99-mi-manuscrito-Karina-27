@@ -74,6 +74,15 @@ env_ambiental <- bci_env_grid %>%
 env_ambiental %>% tibble
 mi_fam_hel_rda_ambiental <- rda(mi_fam_hel ~ ., env_ambiental)
 summary(mi_fam_hel_rda_ambiental)
+#' 
+env_select <- bci_env_grid %>% 
+  st_drop_geometry %>%
+  dplyr::select_if(is.numeric) %>%
+  dplyr::select(-id) %>%
+  dplyr::select(Al, Cu, Mn, pH, N.min., elevacion_media, orientacion_media)
+env_select %>% tibble
+mi_fam_hel_rda_select <- rda(mi_fam_hel ~ ., env_select)
+summary(mi_fam_hel_rda_select)
 #' ¿Qué partes del resumen debes mirar?
 #' 
 #' - La varianza, particionada, de la cual se muestra tanto la inercia (absoluta) como la proporción, y está repartida entre restringida (*constrained*=0.61) y no restringida (*unconstrained*=0.39). La parte restringida es equivalente al R<sup>2</sup> no ajustado del análisis de regresión. Sin embargo, al igual que ocurre en la regresión, este valor está fuertemente sesgado (inflado de varianza por correlación aleatoria o multicolinealidad); además, en el ejemplo, también está afectado por la no independencia de las observaciones. Por esta razón, es prudente calcular el R<sup>2</sup> ajustado o "insesgado" (ver abajo).
@@ -90,6 +99,7 @@ summary(mi_fam_hel_rda_ambiental)
 #' 
 RsquareAdj(mi_fam_hel_rda_suelo)$adj.r.squared
 RsquareAdj(mi_fam_hel_rda_ambiental)$adj.r.squared
+RsquareAdj(mi_fam_hel_rda_select)$adj.r.squared
 #' 
 #' Normalmente, el R<sup>2</sup> insesgado es mucho más bajo que el sesgado, porque se relativiza en función de la razón de grados de libertad. Mientras más alejado de cero se encuentre el valor de R<sup>2</sup>, mayor cantidad de varianza explicada insesgada contiene el modelo.
 #' 
@@ -97,6 +107,7 @@ RsquareAdj(mi_fam_hel_rda_ambiental)$adj.r.squared
 #' 
 vif.cca(mi_fam_hel_rda_suelo)
 vif.cca(mi_fam_hel_rda_ambiental) #Hay que convertir los valores
+vif.cca(mi_fam_hel_rda_select)
 #' 
 #' Variables con valores por encima de 10 deben ser examinadas y, desde una posición conservadora, deben excluirse, comenzando por las de mayor VIF y excluyendo una, a lo sumo dos, a la vez. Por ejemplo, en este caso, las variables `Ca`, `K`, `Mg` y `Zn` deberían excluirse. No se deben excluir todas a la vez, puesto que al quitar una variable, los VIF se reajustan; es decir, una variable con efecto de colinealidad podría no tenerlo ante la exclusión de una o varias alternas. Exploraré el potencial de los VIF en el siguiente ejemplo, donde realizó un RDA con más variables, además de las de suelo.
 #' 
@@ -104,20 +115,20 @@ vif.cca(mi_fam_hel_rda_ambiental) #Hay que convertir los valores
 #' 
 #' Escalamiento 1:
 #' 
-plot(mi_fam_hel_rda_suelo,
+plot(mi_fam_hel_rda_select,
      scaling = 1,
      display = c("sp", "lc", "cn"),
      main = "Triplot de RDA especies ~ var. suelo, escalamiento 1"
 )
-mi_fam_hel_rda_suelo_sc1 <-
-  scores(mi_fam_hel_rda_suelo,
+mi_fam_hel_rda_select_sc1 <-
+  scores(mi_fam_hel_rda_select,
          choices = 1:2,
          scaling = 1,
          display = "sp"
   )
 arrows(0, 0,
-       mi_fam_hel_rda_suelo_sc1[, 1] * 0.9,
-       mi_fam_hel_rda_suelo_sc1[, 2] * 0.9,
+       mi_fam_hel_rda_select_sc1[, 1] * 0.9,
+       mi_fam_hel_rda_select_sc1[, 2] * 0.9,
        length = 0,
        lty = 1,
        col = "red"
@@ -127,20 +138,20 @@ arrows(0, 0,
 #' 
 #' Escalamiento 2
 #' 
-plot(mi_fam_hel_rda_suelo,
+plot(mi_fam_hel_rda_select,
      scaling = 2,
      display = c("sp", "lc", "cn"),
      main = "Triplot de RDA especies ~ var. suelo, escalamiento 2"
 )
-mi_fam_hel_rda_suelo_sc2 <-
-  scores(mi_fam_hel_rda_suelo,
+mi_fam_hel_rda_select_sc2 <-
+  scores(mi_fam_hel_rda_select,
          scaling = 2,
          choices = 1:2,
          display = "sp"
   )
 arrows(0, 0,
-       mi_fam_hel_rda_suelo_sc2[, 1] * 0.9,
-       mi_fam_hel_rda_suelo_sc2[, 2] * 0.9,
+       mi_fam_hel_rda_select_sc2[, 1] * 0.9,
+       mi_fam_hel_rda_select_sc2[, 2] * 0.9,
        length = 0,
        lty = 1,
        col = "red"
@@ -279,24 +290,24 @@ arrows(0, 0,
 #' 
 #' #### Ejemplo usando las matriz ambiental con variables seleccionadas:
 #' 
-mi_fam_cca_selec4 <- cca(mi_fam ~ ., env_selec4)
-summary(mi_fam_cca_selec4)
-RsquareAdj(mi_fam_cca_selec4)
+mi_fam_cca_select <- cca(mi_fam ~ ., env_select)
+summary(mi_fam_cca_select)
+RsquareAdj(mi_fam_cca_select)
 #' 
 #' Escalamiento 1
 #' 
-plot(mi_fam_cca_selec4,
+plot(mi_fam_cca_select,
      scaling = 1,
      display = c("sp", "lc", "cn"),
-     main = "Triplot de CCA especies ~ var. selec4, escalamiento 1"
+     main = "Triplot de CCA especies ~ var. select, escalamiento 1"
 )
 #' 
 #' Escalamiento 2
 #' 
-plot(mi_fam_cca_selec4,
+plot(mi_fam_cca_select,
      scaling = 2,
      display = c("sp", "lc", "cn"),
-     main = "Triplot de CCA especies ~ var. selec4, escalamiento 2"
+     main = "Triplot de CCA especies ~ var. select, escalamiento 2"
 )
 #'
 #' Excluyendo especies con abundancia menor a 100 individuos

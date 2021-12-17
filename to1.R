@@ -30,8 +30,8 @@ mi_fam <- mc_chrys
 bci_env_grid %>% tibble
 grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
 table(grupos_upgma_k2)
-grupos_ward_k3 <- readRDS('grupos_ward_k3.RDS')
-table(grupos_ward_k3)
+grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
+table(grupos_ward_k2)
 grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
 table(grupos_compl_k2)
 #' 
@@ -75,6 +75,16 @@ env_ambiental %>% tibble
 env_ambiental_pca <- rda(env_ambiental, scale = TRUE)
 env_ambiental_pca
 summary(env_ambiental_pca)
+#' 
+env_select <- bci_env_grid %>% 
+  st_drop_geometry %>%
+  dplyr::select_if(is.numeric) %>%
+  dplyr::select(-id) %>%
+  dplyr::select(Zn, Al, pH, N.min., geomorf_llanura_pct, heterogeneidad_ambiental, elevacion_media, orientacion_media, geomorf_vertiente_pct)
+env_select %>% tibble
+env_select_pca <- rda(env_select, scale = TRUE)
+env_select_pca
+summary(env_select_pca)
 #' Para agilizar la producción de scripts analíticos de referencia, trasladaré las explicaciones de cada resultado a los vídeos regulares que alojo en el repositorio de la asignatura. En ellos explicaré cómo interpretar éste y otros resultados.
 #' 
 #' En el vídeo asociado, explico el significado de:
@@ -87,6 +97,7 @@ summary(env_ambiental_pca)
 #' 
 screeplot(env_suelo_pca, bstick = TRUE)
 screeplot(env_ambiental_pca, bstick = TRUE)
+screeplot(env_select_pca, bstick = TRUE)
 #' 
 #' Usando función `cleanplot.pca`
 #' 
@@ -99,7 +110,12 @@ par(mfrow = c(1, 2))
 cleanplot.pca(env_ambiental_pca, scaling = 1, mar.percent = 0.08, cex.char1 = 0.5)
 cleanplot.pca(env_ambiental_pca, scaling = 2, mar.percent = 0.04, cex.char1 = 0.5)
 par(mfrow = c(1, 1))
-#' Comparar distribución de los sitios en biplots con distribución real en el mapa:
+#'
+par(mfrow = c(1, 2))
+cleanplot.pca(env_select_pca, scaling = 1, mar.percent = 0.08, cex.char1 = 0.5)
+cleanplot.pca(env_select_pca, scaling = 2, mar.percent = 0.04, cex.char1 = 0.5)
+par(mfrow = c(1, 1))
+#'  Comparar distribución de los sitios en biplots con distribución real en el mapa:
 #' 
 #' ### Generar mapa de cuadros sin simbología
 #' 
@@ -118,8 +134,8 @@ mapa_cuadros
 #' 
 #' Comparar con resultados de un análisis de agrupamiento del mismo conjunto de datos. Primero agrupo mis sitios basado en la misma matriz ambiental fuente del PCA (`env_suelo`), escalándola.
 #' 
-(env_agrupamiento <- hclust(dist(scale(env_suelo)), 'ward.D'))
-(env_grupos <- cutree(env_agrupamiento, k = 3))
+(env_agrupamiento <- hclust(dist(scale(env_select)), 'ward.D'))
+(env_grupos <- cutree(env_agrupamiento, k = 2))
 (mi_cluster <- factor(env_grupos))
 (mi_cluster_l <- levels(mi_cluster))
 (mi_cluster_l_seq <- 1:length(mi_cluster_l))
@@ -133,7 +149,7 @@ mapa_cuadros
 #' Luego creo el gráfico base, coloco los puntos sobre el gráfico usando las puntuaciones, les coloco rótulos y, finalmente, coloco leyenda:
 #'
 grafico_base <- plot(
-  env_suelo_pca,
+  env_select_pca,
   display = "wa",
   scaling = 1,
   type = "n",
@@ -147,7 +163,7 @@ for (i in mi_cluster_l_seq) {
          cex = 2,
          col = i + 1)
 }
-text(puntuaciones, row.names(env_suelo), cex = 1, pos = 3)
+text(puntuaciones, row.names(env_select), cex = 1, pos = 3)
 legend(
   "topright", # Otras alternativas: "bottomleft", "bottomright" y "topleft"
   paste("Grupo", c(mi_cluster_l_seq)),
@@ -166,7 +182,7 @@ legend(
 (mi_cluster_anterior_l <- levels(mi_cluster_anterior))
 (mi_cluster_anterior_l_seq <- 1:length(mi_cluster_anterior_l))
 grafico_base <- plot(
-  env_suelo_pca,
+  env_select_pca,
   display = "wa",
   scaling = 1,
   type = "n",
@@ -180,7 +196,7 @@ for (i in mi_cluster_anterior_l_seq) {
          cex = 2,
          col = i + 1)
 }
-text(puntuaciones, row.names(env_suelo), cex = 1, pos = 3)
+text(puntuaciones, row.names(env_select), cex = 1, pos = 3)
 legend(
   "topright", # Otras alternativas: "bottomleft", "bottomright" y "topleft"
   paste("Grupo", c(mi_cluster_anterior_l_seq)),
@@ -220,7 +236,7 @@ par(mfrow = c(1, 1))
 biplot(
   mi_fam_hel_pca,
   main = "PCA, escalamiento 2, ajuste a variables ambientales")
-(mi_fam_hel_pca_envfit <- envfit(mi_fam_hel_pca, env_suelo, scaling = 2))
+(mi_fam_hel_pca_envfit <- envfit(mi_fam_hel_pca, env_select, scaling = 2))
 plot(mi_fam_hel_pca_envfit, p.max = 0.05 , col = 3)
 #' 
 #' Comento los resultados en el vídeo asociado. También probaré ajuste con todas las numéricas de la matriz ambiental, excluyendo por supuesto la columna `id`:
@@ -300,5 +316,5 @@ text(
   mi_fam_d_bray_pcoa_wa,
   rownames(mi_fam_d_bray_pcoa_wa),
   cex = 0.7, col = "red")
-(mi_fam_d_bray_pcoa_env <- envfit(mi_fam_d_bray_pcoa, env_num))
+(mi_fam_d_bray_pcoa_env <- envfit(mi_fam_d_bray_pcoa, env_select))
 plot(mi_fam_d_bray_pcoa_env, p.max = 0.05, col = 3)

@@ -39,6 +39,15 @@
 \setcounter{secnumdepth}{3}
 
 
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 \title{Título\\[2\baselineskip]  }
 
@@ -239,9 +248,168 @@ asociados a la familia Chrysobalanaceae en la parcela permanente de BCI.
 
 \section{Metodología}\label{metodologuxeda}
 
+\subsection{Obtención de los datos}\label{obtenciuxf3n-de-los-datos}
+
+Los datos fueron obtenidos del censo realizado durante el 2010 por el
+Smithsonian Tropical Research Institute en la parcela permanente de
+Barro Colorado Island en el lago Gatún, Panamá (S. Hubbell, Condit, \&
+Foster, 2010). En este censo, se contabilizaron todas las árboles con
+troncos de al menos 10mm de Diámetro de Altura de Pecho, y estos fueron
+identificados y marcados. Esta parcela cuenta con 50 hectáreas dividida
+en 50 cuadros de 1 hectárea cada una.
+
+\includegraphics{mapa_cuadros_panama.png}\{width = 80\%\}
+
+Los datos utilizados en esta investigación fueron administrados a través
+del repositorio Batlle (2020). Estos datos continenen la matriz de
+comunidad y la matriz ambiental. En la matriz de comunidad se extrajeron
+los datos de la familia Chrysobalanaceae.
+
+\subsection{Análisis estadístico}\label{anuxe1lisis-estaduxedstico}
+
+Para conocer los patrones de agrupamiento según la composición de
+especies de Chrysobalanaceae se realizó un análisis de agrupamiento
+tomando en consideración cuatro técnicas jerarquicas y aglomerativas
+(Borcard, Gillet, Legendre, \& others, 2011, Krebs (2014)), las cuales
+fueron: por enlace simple,por enlace completo, por enlace promedio
+(UPGMA) y por el método de Ward. Los datos de la matriz de comunidad
+fueron normalizados y se calculó la distancia euclídea, para luego
+proceder a realizar las técnicas de agrupamiento.
+
+Para conocer el patrón de organización de la familia Chrysobalanaceae y
+seleccionar el dendrograma que mejor explica las relaciones entre las
+especies de esta familia, se realizaron pruebas de distancia cofenética;
+y para conocer el número de grupos óptimo se calculó la anchura de
+siluetas. Por medio de Bootstrap multiescalar se revisaron los datos
+obtenidos en los métodos anteriores. Para evaluar la relación de los
+grupos obtenidos con las variables ambientales se utilizó una prueba de
+igualdad de promedios por t student y la prueba no paramétrica de la
+suma de rangos de Wilcoxon (medianas). Además, se realizó un análisis de
+especies indicadoras mediante la prueba de IndVal y un analisis de
+especies con preferencia por hábitat mediante el coeficiente de
+correlación biserial puntual (Phi).
+
+Las técnicas de ordenación consisten en colocar objetos o variables en
+un espacio donde cada uno representa una dimensión (Borcard et al.,
+2011). Los gráficos generados mediante estos análisis muestran una
+relación ordenada de las variables formando un diagrama de dispersión
+(Legendre \& Legendre, 2012, Legendre \& Gallagher (2001)).
+
+A fin de detectar las tendencias de ordenación de las especies de la
+familia Chrysobalanaceae se utilizaron diferentes técnicas de tipo
+restringida y no restringida. El análisis de componentes principales
+(PCA) se realizó para variables ambientales utilizando solo las
+variables numéricas y escalándolas a puntuaciones Z para generar una
+matriz de correlaciones; para las variables de la matriz de comunidad
+los datos fueron transformados basados en Hellinger. El análisis de
+correspondencia (CA) se realizó calculando las distancias de los objetos
+en CHI cuadradro. Y por último, se realizó un análisis de coordenadas
+principales (PCoA) con promedios ponderados calculando la distancia
+Bray-curtis entre los objetos.
+
+\textless{}!-- Las técnicas de ordenación restringida utilizadas fueron
+Análisis de redundancia (RDA) utilizando una matriz transformada a
+Hellinger y análisis de correspondencia canónica (CCA).
+
+Los análisis fueron realizados en la consola de RStudio (R Core Team,
+2020) administrada por José Ramón Martínez Batlle. Para acceder a la
+consola se realizó mediante el navegador Google Chrome en una
+computadora personal de prestaciones básicas.
+
 \section{Resultados}\label{resultados}
 
+La familia Chrysobalanaceae se encuentra representada en BCI por un
+total de 4,821 individuos formada por las especies \emph{Hirtella
+americana}, \emph{Hirtella triandra}, \emph{Licania platypus} y
+\emph{Licania hypoleuca} (/ref\{tab:tabla\_abun\}. La especie más
+abundante fue \emph{Hirtella triandra}, que representa un 90\% de la
+composición de la familia en BCI.
+
+{[}Tabla de abundancias de las especies de Chrysobalanaceae en
+BCI\label{tab:tabla_abun}{]} \textbar{} Especie \textbar{} Abundancia
+\textbar{}
+\textbar{}----------------------\textbar{}------------\textbar{}
+\textbar{} \emph{Hirtella triandra} \textbar{} 4408 \textbar{}
+\textbar{} \emph{Licania platypus} \textbar{} 251 \textbar{} \textbar{}
+\emph{Licania hypoleuca} \textbar{} 141 \textbar{} \textbar{}
+\emph{Hirtella americana} \textbar{} 21 \textbar{}
+
+Los análisis de agrupamiento por medio de las cuatro técnicas mostraron
+grupos similares, con un grupo consistente en todas las técnicas formado
+por los sitios 24, 25, 29 y 30. Los dendrogramas que mostraron mayor
+correlación cofenética fueron los creados por los métodos de enlace
+completo y enlace promedio (UPGMA). El número de grupos obtenido
+mediante el cálculo de anchura de silueta fue de dos para los
+dendrogramas generados por enlace completo, por enlace pormedio (UPGMA)
+y por Ward.
+
+El mapa de calor generado para los dendrogramas muestra ligeramente la
+apariencia de tres grupos, sin embargo el análisis mediante boostrap
+multiescalar refuerza la partición en solo dos grupos para UPGMA, Ward y
+por enlace completo. Ya que los dendrogramas generados por UPGMA y por
+enlace completo mostraron resultados muy similares, los dendrogramas
+utilizados para posteriores análisis fueron los generados por medio de
+agrupamiento por enlace completo y Ward para dos grupos óptimos
+\ref{clusters}. El grupo uno formado por 46 sitios y el grupo dos
+formado por 4 sitios \ref{mapagrupos}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{Clusters.png}
+\caption{Dendrogramas generados por análisis de
+agrupamiento\label{clusters}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{mapa_ward_k2.png}
+\caption{Mapa según grupos generados por análisis de
+agrupamiento\label{mapagrupos}}
+\end{figure}
+
+Las pruebas de igualdad de promedios realizadas por medio de t-student y
+la suma de rangos de Wilcoxon mostró que las variables heterogeneidad
+ambiental, Nitrógeno y elevación media muestran relación significativa
+con los grupos formados por medio del análisis de agrupamiento.
+
+Los análisis de especies indicadoras o con preferencia por determinados
+hábitats dio como resultado que \emph{Licania hypoleuca} parece ser una
+especie indicadora para el grupo 2 (formado por los sitios 24, 25, 29 y
+30).
+
+Los técnicas de ordenación realizadas mediante análisis de componentes
+principales para datos de variables ambientales dio como resultado que
+los sitios según las variables de suelo se asocian en dos grupos
+distintivos, sin embargo estos grupos no se corresponden con los
+generados por medio del análisis de agrupamiento.
+
+\textless{}!-- Insertar grafico de variables de suelo grupos y variables
+de de suelo por complete grupos.
+
+\textless{}!-- El análisis de componentes principales aplicado a la
+matriz de comunidad muestra la relación de \emph{Licania hypoleuca} con
+los sitios del grupo 2 del análisis de agrupamiento generado por enlace
+completo, al igual que el análisis de correspondecia. Esta especie
+parece asociarse con la presencia de Aluminio o Manganeso (Verificar).
+\textless{}!-- El biplot generado por PCA señala que los sitios del
+grupo 2 tienen una relación con las variables ambientales (las que
+tengan 3).
+
+\textless{}!-- Insertar grafico de PCA para datos de comunidad
+
+Los resultados del ánalisis de coordenadas principales (PCoA) con
+promedios ponderados no mostró resultados convincentes, por lo que
+fueron excluidos del estudio.
+
 \section{Discusión}\label{discusiuxf3n}
+
+La composición de especies de la familia Chrysobalanaceae en BCI no
+parece organizarse en patrones discontinuos, aunque los análisis de
+agrupamiento muestran un grupo formado por los sitios 24, 25, 29 y 30
+que se caracteriza por la abundancia de \emph{Licania hypoleuca}.
+
+\textless{}!-- Porque Hirtella triandra es mas abundante que las demas.
+Porque el grupo de 4 sitios es consistente.
 
 \section{Agradecimientos}\label{agradecimientos}
 
@@ -259,6 +427,15 @@ Bardon, L., Chamagne, J., Dexter, K. G., Sothers, C. A., Prance, G. T.,
 \& Chave, J. (2013). Origin and evolution of chrysobalanaceae: Insights
 into the evolution of plants in the neotropics. \emph{Botanical Journal
 of the Linnean Society}, \emph{171}(1), 19--37.
+
+\hypertarget{ref-jose_ramon_martinez_batlle_2020_4402362}{}
+Batlle, J. R. M. (2020). biogeografia-master/scripts-de-analisis-BCI:
+Long coding sessions (Version v0.0.0.9000).
+\url{https://doi.org/10.5281/zenodo.4402362}
+
+\hypertarget{ref-borcard2011numerical}{}
+Borcard, D., Gillet, F., Legendre, P., \& others. (2011).
+\emph{Numerical ecology with r} (Vol. 2). Springer.
 
 \hypertarget{ref-condit1998tropical}{}
 Condit, R. (1998). \emph{Tropical forest census plots: Methods and
@@ -295,10 +472,27 @@ Hubbell, S. P., \& Foster, R. B. (1992). Short-term dynamics of a
 neotropical forest: Why ecological research matters to tropical
 conservation and management. \emph{Oikos}, 48--61.
 
+\hypertarget{ref-Hubbell2010Forest}{}
+Hubbell, S., Condit, R., \& Foster, R. (2010). Forest census plot on
+barro colorado island. Retrieved November 30),, from
+\url{http://ctfs.si.edu/webatlas/datasets/bci/}
+
+\hypertarget{ref-krebs1999ecological}{}
+Krebs, C. J. (2014). \emph{Ecological methodology} (3rd ed.).
+
 \hypertarget{ref-lange2013physiological}{}
 Lange, O. L., Nobel, P. S., Osmond, C. B., \& Ziegler, H. (2013).
 \emph{Physiological plant ecology iii: Responses to the chemical and
 biological environment} (Vol. 12). Springer Science \& Business Media.
+
+\hypertarget{ref-legendre2001ecologically}{}
+Legendre, P., \& Gallagher, E. D. (2001). Ecologically meaningful
+transformations for ordination of species data. \emph{Oecologia},
+\emph{129}(2), 271--280.
+
+\hypertarget{ref-legendre2012numerical}{}
+Legendre, P., \& Legendre, L. (2012). \emph{Numerical ecology}.
+Elsevier.
 
 \hypertarget{ref-lomolino2017biogeography}{}
 Lomolino, M. V., Riddle, B. R., Whittaker, R. J., \& Brown, J. H.
@@ -311,6 +505,10 @@ Blackwell}.
 \hypertarget{ref-prance2014chrysobalanaceae}{}
 Prance, G. (2014). Chrysobalanaceae. In \emph{Flowering plants.
 eudicots} (pp. 19--28). Springer.
+
+\hypertarget{ref-RStudio}{}
+R Core Team. (2020). \emph{R: A language and environment for statistical
+computing}. Retrieved from \url{https://www.R-project.org/}
 
 \hypertarget{ref-ircCicaco}{}
 Regional Conservation, T. I. for. (2020). Chrysobalanus icaco,

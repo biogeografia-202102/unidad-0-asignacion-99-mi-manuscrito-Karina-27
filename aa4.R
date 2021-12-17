@@ -20,8 +20,8 @@ load('biodata/Chrysobalanaceae.Rdata')
 mi_fam <- mc_chrys
 grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
 table(grupos_upgma_k2)
-grupos_ward_k3 <- readRDS('grupos_ward_k3.RDS')
-table(grupos_ward_k3)
+grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
+table(grupos_ward_k2)
 grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
 table(grupos_compl_k2)
 #' 
@@ -46,18 +46,18 @@ colSums(mi_fam)
 #' 
 #' Ward
 #' 
-iva_ward_k3 <- multipatt(
+iva_ward_k2 <- multipatt(
   x = mi_fam,
-  cluster = grupos_ward_k3,
+  cluster = grupos_ward_k2,
   func = 'IndVal.g',
   max.order = 2,
   control = how(nperm = 999))
-summary(iva_ward_k3, indvalcomp = TRUE)
+summary(iva_ward_k2, indvalcomp = TRUE)
 colSums(mi_fam)
-(p_ward_adj <- p.adjust(iva_ward_k3$sign$p.value))
+(p_ward_adj <- p.adjust(iva_ward_k2$sign$p.value))
 (iva_ward_boot <- strassoc(
   X = mi_fam,
-  cluster = grupos_ward_k3,
+  cluster = grupos_ward_k2,
   func = "IndVal.g",
   nboot = 1000))
 #'
@@ -99,17 +99,17 @@ colSums(mi_fam)
 #'
 #' Ward
 #' 
-phi_ward_k3 <- multipatt(
+phi_ward_k2 <- multipatt(
   mi_fam,
-  grupos_ward_k3,
+  grupos_ward_k2,
   func = "r.g",
   max.order = 2,
   control = how(nperm = 999))
-summary(phi_ward_k3)
+summary(phi_ward_k2)
 colSums(mi_fam)
 (phi_ward_boot <- strassoc(
   X = mi_fam,
-  cluster = grupos_ward_k3,
+  cluster = grupos_ward_k2,
   func = "r.g",
   nboot = 1000))
 #'

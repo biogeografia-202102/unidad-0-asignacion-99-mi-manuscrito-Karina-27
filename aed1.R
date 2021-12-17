@@ -41,7 +41,7 @@ sort(specnumber(mc_chrys)) # Ordenados ascendentemente
 summary(specnumber(mc_chrys)) # Resumen estadístico
 
 #' ### Abundancia de especies por quadrat
-sort(rowSums(mc_chrys))
+sort(rowSums(mc_chrys['Licania hypoleuca']))
 summary(rowSums(mc_chrys)) # Resumen estadístico
 
 #' ### Abundancia por especie
