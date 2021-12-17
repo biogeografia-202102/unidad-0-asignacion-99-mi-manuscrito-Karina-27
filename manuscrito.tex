@@ -52,7 +52,7 @@
 
 \title{Técnicas de Ecología numérica aplicadas a la comunidad de
 Chrysobalanaceae representada en la parcela permanente de Barro Colorado
-Island (BCI)\\[2\baselineskip]  }
+Island (BCI)  }
 
 
 
@@ -107,7 +107,7 @@ Island (BCI)\\[2\baselineskip]  }
 biodiversidad},  
             pdftitle={Técnicas de Ecología numérica aplicadas a la comunidad de
 Chrysobalanaceae representada en la parcela permanente de Barro Colorado
-Island (BCI)\\[2\baselineskip]},
+Island (BCI)},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
@@ -279,7 +279,12 @@ troncos de al menos 10mm de Diámetro de Altura de Pecho, y estos fueron
 identificados y marcados. Esta parcela cuenta con 50 hectáreas dividida
 en 50 cuadros de 1 hectárea cada una.
 
-\includegraphics{mapa_cuadros_panama.png}\{width = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.50000\textwidth]{mapa_cuadros_panama.png}
+\caption{Parcela de 50-ha de Barro Colorado Island,
+Panamá\label{mapaBCIcuadros}}
+\end{figure}
 
 Los datos utilizados en esta investigación fueron administrados a través
 del repositorio Batlle (2020). Estos datos continenen la matriz de
@@ -370,22 +375,25 @@ Coe (2005), Wickham (2017) y De Caceres \& Legendre (2009).
 La familia Chrysobalanaceae se encuentra representada en BCI por un
 total de 4,821 individuos formada por las especies \emph{Hirtella
 americana}, \emph{Hirtella triandra}, \emph{Licania platypus} y
-\emph{Licania hypoleuca} (/ref\{tab:tabla\_abun\}. La especie más
-abundante fue \emph{Hirtella triandra}, que representa un 90\% de la
-composición de la familia en BCI.
+\emph{Licania hypoleuca} \ref{tab:abun_sp}. La especie más abundante fue
+\emph{Hirtella triandra}, que representa un 90\% de la composición de la
+familia en BCI.
 
-{[}Tabla de abundancias de las especies de Chrysobalanaceae en
-BCI\label{tab:tabla_abun}{]}
-
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}lr@{}}
+\caption{\label{tab:abun_sp}Tabla de abundancias de las especies de
+Chrysobalanaceae en BCI}\tabularnewline
 \toprule
-Especie & Abundancia\tabularnewline
+Latin & n\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Latin & n\tabularnewline
 \midrule
 \endhead
-\emph{Hirtella triandra} & 4408\tabularnewline
-\emph{Licania platypus} & 251\tabularnewline
-\emph{Licania hypoleuca} & 141\tabularnewline
-\emph{Hirtella americana} & 21\tabularnewline
+Hirtella triandra & 4408\tabularnewline
+Licania platypus & 251\tabularnewline
+Licania hypoleuca & 141\tabularnewline
+Hirtella americana & 21\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -417,7 +425,7 @@ agrupamiento\label{clusters}}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.80000\textwidth]{mapa_ward_k2.png}
+\includegraphics[width=0.50000\textwidth]{mapa_ward_k2.png}
 \caption{Mapa según grupos generados por análisis de
 agrupamiento\label{mapagrupos}}
 \end{figure}
@@ -443,9 +451,13 @@ El análisis de componentes principales para los datos de variables
 ambientales seleccionadas dio como resultado que los sitios se asocian
 en dos grupos distintivos, sin embargo estos grupos no se corresponden
 con los generados por medio del análisis de agrupamiento por enlace
-completo (\ref{pcagruop}).
+completo (\ref{pcagroup}).
 
-\includegraphics{PCA_porgrupos.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{PCA_porgrupos.png}
+\caption{Analisis de Componentes Principales por grupos\label{pcagroup}}
+\end{figure}
 
 El análisis de componentes principales (PCA) aplicado a la matriz de
 comunidad muestra la relación de \emph{Licania hypoleuca} con los sitios
@@ -456,7 +468,12 @@ Manganeso. Las especies \emph{Hirtella triandra} e \emph{Hirtella
 americana} presentan correlación inversa, pues los vectores se muestran
 en direcciones completamente opuestas.
 
-\includegraphics{PCA_especies.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{PCA_especies.png}
+\caption{PCA escalamiento 2 con ajuste a variables
+seleccionadas\label{pcaespecies}}
+\end{figure}
 
 Los resultados del análisis de correspondencia canónica explican un 47\%
 de los datos y en la grafica se puede verificar que \emph{Hirtella
@@ -465,7 +482,11 @@ centro del gráfico. También se muestra que \emph{Licania platypus} se
 encuentra muy correlacionada con la abundancia de nitrógeno mineralizado
 (\ref{triplotrda}).
 
-\includegraphics{triplotRDA.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{triplotRDA.png}
+\caption{Triplot de RDA de especies en escalamiento 2\label{triplotrda}}
+\end{figure}
 
 Las variables ambientales Magnesio, Zinc, Nitrógeno mineralizado y
 geomorfología de interfluvio mostraron relación con los números de Hill.
@@ -476,9 +497,19 @@ un 100\% de completitud de la muestra, según los estimadores de Chao
 \ref{extrapolacion}, por lo que podemos afirmar que esta familia se
 encuentra muy bien representada en BCI.
 
-\includegraphics{diversidadalpha.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{diversidadalpha.png}
+\caption{Análisis de Correlación de Pearson aplicados a índices de
+diversidad según variables ambientales\label{diversidadalpha}}
+\end{figure}
 
-\includegraphics{Extrapolacion_mifamilia.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{Extrapolacion_mifamilia.png}
+\caption{Gráfico de rarefacción para toda la
+comunidad\label{extrapolacion}}
+\end{figure}
 
 Sin embargo, al realizar la estimación de la riqueza por medio de los
 estimadores de Chao para los grupos generados en el análisis de
@@ -503,12 +534,21 @@ significativa, por lo que parece que hay una dependencia espacial
 inducida por las variables ambientales. El I de moran aplicado a la
 matriz sin tendencia espacial dio como resultado que \emph{Licania
 hypoleuca} e \emph{Hirtella triandra} se encuentran en un patrón
-aglomerativo (\textbackslash{}ref\{lisamaps). Las variable que muestra
-un patrón aglomerativo común es la elevación media.
+aglomerativo (\ref{lisamaps}). Las variable que muestra un patrón
+aglomerativo común es la elevación media.
 
-\includegraphics{correlogramavariables.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{correlogramavariables.png}
+\caption{Correlograma de variables ambientales\label{correlograma}}
+\end{figure}
 
-\includegraphics{clusterlisaespecies.png}\{widtht = 80\%\}
+\begin{figure}
+\centering
+\includegraphics[width=0.80000\textwidth]{clusterlisaespecies.png}
+\caption{Mapas Lisa generados para las especies de Chrysobalanaceae y
+elvación media\label{lisamaps}}
+\end{figure}
 
 \section{Discusión}\label{discusiuxf3n}
 
@@ -547,10 +587,537 @@ Agradezco al profesor José Martínez Batlle por sus enseñanzas y su apoyo
 en el análisis de esta investigación. También al Smithsonian Tropical
 Research Institute por la obtención y el suministro de los datos.
 
-\section{Información de soporte}\label{informaciuxf3n-de-soporte}
-
 \section{\texorpdfstring{\emph{Script}
 reproducible}{Script reproducible}}\label{script-reproducible}
+
+\begin{verbatim}
+## Warning in readLines("Script_rep.R"): incomplete final line found on
+## 'Script_rep.R'
+\end{verbatim}
+
+\begin{verbatim}
+##   [1] "#' Cargar paquetes"                                                                                                                                                    
+##   [2] "#'"                                                                                                                                                                    
+##   [3] "library(vegan)"                                                                                                                                                        
+##   [4] "library(tidyverse)"                                                                                                                                                    
+##   [5] "library(sf)"                                                                                                                                                           
+##   [6] "source('biodata/funciones.R')"                                                                                                                                         
+##   [7] "#'"                                                                                                                                                                    
+##   [8] "#' Cargar datos"                                                                                                                                                       
+##   [9] "load('biodata/Chrysobalanaceae.Rdata')"                                                                                                                                
+##  [10] "load('biodata/matriz_ambiental.Rdata')"                                                                                                                                
+##  [11] "bci_env_grid %>% tibble"                                                                                                                                               
+##  [12] "censo_chrys %>% tibble"                                                                                                                                                
+##  [13] "#'"                                                                                                                                                                    
+##  [14] "grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')"                                                                                                                       
+##  [15] "table(grupos_ward_k2)"                                                                                                                                                 
+##  [16] "grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')"                                                                                                                     
+##  [17] "table(grupos_compl_k2)"                                                                                                                                                
+##  [18] "#'"                                                                                                                                                                    
+##  [19] "#' Analisis Exploratorio"                                                                                                                                              
+##  [20] "#' Lista de especies: 4"                                                                                                                                               
+##  [21] "sort(colnames(mc_chrys))"                                                                                                                                              
+##  [22] "#'"                                                                                                                                                                    
+##  [23] "#' Abundancia de toda la comunidad"                                                                                                                                    
+##  [24] "sum(colSums(mc_chrys))"                                                                                                                                                
+##  [25] "#'"                                                                                                                                                                    
+##  [26] "#' Abundancia por cuadrante"                                                                                                                                           
+##  [27] "sort(rowSums(mc_chrys))"                                                                                                                                               
+##  [28] "#'"                                                                                                                                                                    
+##  [29] "#' Abundancia por especie"                                                                                                                                             
+##  [30] "sort(colSums(mc_chrys))"                                                                                                                                               
+##  [31] "#'"                                                                                                                                                                    
+##  [32] "#' Tabla de abundancias"                                                                                                                                               
+##  [33] "abun_sp <- censo_chrys %>%"                                                                                                                                            
+##  [34] "  group_by(Latin) %>% "                                                                                                                                                
+##  [35] "  count() %>% "                                                                                                                                                        
+##  [36] "  arrange(desc(n))"                                                                                                                                                    
+##  [37] "abun_sp"                                                                                                                                                               
+##  [38] "#'"                                                                                                                                                                    
+##  [39] "#' Cargar otros paquetes"                                                                                                                                              
+##  [40] "library(cluster)"                                                                                                                                                      
+##  [41] "library(gclus)"                                                                                                                                                        
+##  [42] "library(pvclust)"                                                                                                                                                      
+##  [43] "library(mapview)"                                                                                                                                                      
+##  [44] "library(RColorBrewer)"                                                                                                                                                 
+##  [45] "library(broom)"                                                                                                                                                        
+##  [46] "library(indicspecies)"                                                                                                                                                 
+##  [47] "#'"                                                                                                                                                                    
+##  [48] "#' Crear abreviaturas de la familia"                                                                                                                                   
+##  [49] "mi_fam <- mc_chrys"                                                                                                                                                    
+##  [50] "(colnames(mi_fam) <- make.cepnames(colnames(mi_fam)))"                                                                                                                 
+##  [51] "(df_equivalencias <- data.frame("                                                                                                                                      
+##  [52] "  nombre_original = colnames(mc_chrys),"                                                                                                                               
+##  [53] "  colnames(mi_fam)))"                                                                                                                                                  
+##  [54] "#'"                                                                                                                                                                    
+##  [55] "#'#' Cargar paletas de colores"                                                                                                                                        
+##  [56] "rojo <- colorRampPalette(brewer.pal(8, \"Reds\"))"                                                                                                                     
+##  [57] "rojo_inv <- colorRampPalette(rev(brewer.pal(8, \"Reds\")))"                                                                                                            
+##  [58] "colores_grupos <- brewer.pal(8, \"Accent\")"                                                                                                                           
+##  [59] "#'"                                                                                                                                                                    
+##  [60] "#' Analisis de Agrupamiento"                                                                                                                                           
+##  [61] "#'"                                                                                                                                                                    
+##  [62] "mi_fam_norm <- decostand(mi_fam, \"normalize\")"                                                                                                                       
+##  [63] "mi_fam_norm_d <- vegdist(mi_fam_norm, \"euc\")"                                                                                                                        
+##  [64] "mi_fam_norm_d %>% tidy"                                                                                                                                                
+##  [65] "attr(mi_fam_norm_d, \"labels\") <- rownames(mi_fam)"                                                                                                                   
+##  [66] "#' Enlace completo"                                                                                                                                                    
+##  [67] "(cl_complete <- hclust(mi_fam_norm_d, method = 'complete'))"                                                                                                           
+##  [68] "plot(cl_complete, labels = rownames(mi_fam), hang = -1,"                                                                                                               
+##  [69] "     main = \"Sitios de BCI según composición de especies de Chrysobalanaceae\\nEnlace completo a partir de matriz de distancia de cuerdas\","                         
+##  [70] "     xlab = 'Sitios', ylab = 'Altura')"                                                                                                                                
+##  [71] "#' Por medio de Ward"                                                                                                                                                  
+##  [72] "(cl_ward <- hclust(mi_fam_norm_d, method = 'ward.D2'))"                                                                                                                
+##  [73] "plot(cl_ward, labels = rownames(mi_fam), hang = -1,"                                                                                                                   
+##  [74] "     main = \"Sitios de BCI según composición de especies de Chrysobalanaceae\\nMétodo de Ward a partir de matriz de distancia de cuerdas\","                          
+##  [75] "     xlab = 'Sitios', ylab = 'Altura')"                                                                                                                                
+##  [76] "#' "                                                                                                                                                                   
+##  [77] "#' Medicion de la correlacion cofenetica"                                                                                                                              
+##  [78] "#' "                                                                                                                                                                   
+##  [79] "lista_cl <- list("                                                                                                                                                     
+##  [80] "  cl_complete = hclust(mi_fam_norm_d, method = 'complete'),"                                                                                                           
+##  [81] "  cl_ward = hclust(mi_fam_norm_d, method = 'ward.D2')"                                                                                                                 
+##  [82] ")"                                                                                                                                                                     
+##  [83] "par(mfrow = c(1,2))"                                                                                                                                                   
+##  [84] "invisible(map(names(lista_cl), function(x) plot(lista_cl[[x]], main = x, hang = -1, cex.lab = 1)))"                                                                    
+##  [85] "par(mfrow = c(1,1))"                                                                                                                                                   
+##  [86] "map_df(lista_cl, function(x) {"                                                                                                                                        
+##  [87] "  coph_d <- cophenetic(x)"                                                                                                                                             
+##  [88] "  corr <- cor(mi_fam_norm_d, coph_d)"                                                                                                                                  
+##  [89] "  return(corr)"                                                                                                                                                        
+##  [90] "})"                                                                                                                                                                    
+##  [91] "#'"                                                                                                                                                                    
+##  [92] "#' Calculo de la anchura de siluetas"                                                                                                                                  
+##  [93] "#'"                                                                                                                                                                    
+##  [94] "anch_sil_ward <- calcular_anchuras_siluetas("                                                                                                                          
+##  [95] "  mc_orig = mi_fam, "                                                                                                                                                  
+##  [96] "  distancias = mi_fam_norm_d, "                                                                                                                                        
+##  [97] "  cluster = lista_cl$cl_ward)"                                                                                                                                         
+##  [98] "anch_sil_ward"                                                                                                                                                         
+##  [99] "w_dend_reord <- reorder.hclust(lista_cl$cl_ward, mi_fam_norm_d)"                                                                                                       
+## [100] "plot(w_dend_reord, hang = -1)"                                                                                                                                         
+## [101] "rect.hclust("                                                                                                                                                          
+## [102] "  tree = w_dend_reord,"                                                                                                                                                
+## [103] "  k = anch_sil_ward$n_grupos_optimo)"                                                                                                                                  
+## [104] "heatmap("                                                                                                                                                              
+## [105] "  as.matrix(mi_fam_norm_d),"                                                                                                                                           
+## [106] "  Rowv = as.dendrogram(w_dend_reord),"                                                                                                                                 
+## [107] "  symm = TRUE,"                                                                                                                                                        
+## [108] "  margin = c(3, 3),"                                                                                                                                                   
+## [109] "  col = rev(cm.colors(4))"                                                                                                                                             
+## [110] ")"                                                                                                                                                                     
+## [111] "#' Bootstrap"                                                                                                                                                          
+## [112] "cl_pvclust_ward <-"                                                                                                                                                    
+## [113] "  pvclust(t(mi_fam_norm),"                                                                                                                                             
+## [114] "          method.hclust = \"ward.D2\","                                                                                                                                
+## [115] "          method.dist = \"euc\","                                                                                                                                      
+## [116] "          iseed = 191, # Resultado reproducible"                                                                                                                       
+## [117] "          parallel = TRUE)"                                                                                                                                            
+## [118] "plot(cl_pvclust_ward, hang = -1)"                                                                                                                                      
+## [119] "lines(cl_pvclust_ward)"                                                                                                                                                
+## [120] "pvrect(cl_pvclust_ward, alpha = 0.91, border = 4)"                                                                                                                     
+## [121] "saveRDS(grupos_ward_k2, 'grupos_ward_k2.RDS')"                                                                                                                         
+## [122] "#' Para complete"                                                                                                                                                      
+## [123] "anch_sil_compl <- calcular_anchuras_siluetas("                                                                                                                         
+## [124] "  mc_orig = mi_fam, "                                                                                                                                                  
+## [125] "  distancias = mi_fam_norm_d, "                                                                                                                                        
+## [126] "  cluster = lista_cl$cl_complete)"                                                                                                                                     
+## [127] "anch_sil_compl"                                                                                                                                                        
+## [128] "(grupos_ward_k2 <- as.factor(cutree(lista_cl$cl_ward, k = 2)))"                                                                                                        
+## [129] "table(grupos_ward_k2)"                                                                                                                                                 
+## [130] "#'"                                                                                                                                                                    
+## [131] "w_dend_reord <- reorder.hclust(lista_cl$cl_complete, mi_fam_norm_d)"                                                                                                   
+## [132] "plot(w_dend_reord, hang = -1)"                                                                                                                                         
+## [133] "rect.hclust("                                                                                                                                                          
+## [134] "  tree = w_dend_reord,"                                                                                                                                                
+## [135] "  k = anch_sil_compl$n_grupos_optimo)"                                                                                                                                 
+## [136] "#'"                                                                                                                                                                    
+## [137] "heatmap("                                                                                                                                                              
+## [138] "  as.matrix(mi_fam_norm_d),"                                                                                                                                           
+## [139] "  Rowv = as.dendrogram(w_dend_reord),"                                                                                                                                 
+## [140] "  symm = TRUE,"                                                                                                                                                        
+## [141] "  margin = c(3, 3),"                                                                                                                                                   
+## [142] "  col = rev(cm.colors(4))"                                                                                                                                             
+## [143] ")"                                                                                                                                                                     
+## [144] "#' Bootstrap"                                                                                                                                                          
+## [145] "cl_pvclust_compl <-"                                                                                                                                                   
+## [146] "  pvclust(t(mi_fam_norm),"                                                                                                                                             
+## [147] "          method.hclust = \"complete\","                                                                                                                               
+## [148] "          method.dist = \"euc\","                                                                                                                                      
+## [149] "          iseed = 27, # Resultado reproducible"                                                                                                                        
+## [150] "          parallel = TRUE)"                                                                                                                                            
+## [151] "plot(cl_pvclust_compl, hang = -1)"                                                                                                                                     
+## [152] "lines(cl_pvclust_compl)"                                                                                                                                               
+## [153] "pvrect(cl_pvclust_compl, alpha = 0.91, border = 4)"                                                                                                                    
+## [154] "(grupos_compl_k2 <- as.factor(cutree(lista_cl$cl_complete, k = 2)))"                                                                                                   
+## [155] "table(grupos_compl_k2)"                                                                                                                                                
+## [156] "saveRDS(grupos_compl_k2, 'grupos_compl_k2.RDS')"                                                                                                                       
+## [157] "#'"                                                                                                                                                                    
+## [158] "#' Mapa de grupos por medio de Ward"                                                                                                                                   
+## [159] "(m_amb_ward_k2 <- bci_env_grid %>%"                                                                                                                                    
+## [160] "    select_if(is.numeric) %>% select(-id) %>% "                                                                                                                        
+## [161] "    mutate(grupos_ward_k2) %>%"                                                                                                                                        
+## [162] "    st_drop_geometry() %>% "                                                                                                                                           
+## [163] "    pivot_longer(-grupos_ward_k2, names_to = \"variable\", values_to = \"valor\"))"                                                                                    
+## [164] "#' "                                                                                                                                                                   
+## [165] "m_amb_ward_k2 %>%"                                                                                                                                                     
+## [166] "  group_by(variable) %>%"                                                                                                                                              
+## [167] "  summarise("                                                                                                                                                          
+## [168] "    p_valor_t = t.test(valor ~ grupos_ward_k2)$p.value,"                                                                                                               
+## [169] "    p_valor_w = wilcox.test(valor ~ grupos_ward_k2, exact = F)$p.value) %>%"                                                                                           
+## [170] "  arrange(p_valor_t) %>%"                                                                                                                                              
+## [171] "  print(n=Inf)"                                                                                                                                                        
+## [172] "#' "                                                                                                                                                                   
+## [173] "m_amb_ward_k2 %>% "                                                                                                                                                    
+## [174] "  group_by(variable) %>% "                                                                                                                                             
+## [175] "  ggplot() + aes(x = grupos_ward_k2, y = valor, fill = grupos_ward_k2) + "                                                                                             
+## [176] "  geom_boxplot() + "                                                                                                                                                   
+## [177] "  scale_fill_brewer(palette = 'Accent') +"                                                                                                                             
+## [178] "  theme_bw() +"                                                                                                                                                        
+## [179] "  theme(legend.position=\"none\") +"                                                                                                                                   
+## [180] "  facet_wrap(~ variable, scales = 'free_y')"                                                                                                                           
+## [181] "#' "                                                                                                                                                                   
+## [182] "mapa_ward_k2 <- mapView("                                                                                                                                              
+## [183] "  bci_env_grid %>% mutate(grupos_ward_k2),"                                                                                                                            
+## [184] "  layer.name = 'Grupos (2) Ward',"                                                                                                                                     
+## [185] "  alpha.regions = 0.6,"                                                                                                                                                
+## [186] "  map.types = 'OpenTopoMap',"                                                                                                                                          
+## [187] "  legend = T,"                                                                                                                                                         
+## [188] "  col.regions = colores_grupos[1:2],"                                                                                                                                  
+## [189] "  zcol = 'grupos_ward_k2') %>%"                                                                                                                                        
+## [190] "  addStaticLabels(label = bci_env_grid$id) %>% "                                                                                                                       
+## [191] "  leaflet::setView("                                                                                                                                                   
+## [192] "    lng = -79.85136,"                                                                                                                                                  
+## [193] "    lat = 9.15097,"                                                                                                                                                    
+## [194] "    zoom = 16)"                                                                                                                                                        
+## [195] "mapa_ward_k2"                                                                                                                                                          
+## [196] "#' "                                                                                                                                                                   
+## [197] "#' Especies indicadoras para Ward_k2"                                                                                                                                  
+## [198] "iva_ward_k2 <- multipatt("                                                                                                                                             
+## [199] "  x = mi_fam,"                                                                                                                                                         
+## [200] "  cluster = grupos_ward_k2,"                                                                                                                                           
+## [201] "  func = 'IndVal.g',"                                                                                                                                                  
+## [202] "  max.order = 2,"                                                                                                                                                      
+## [203] "  control = how(nperm = 999))"                                                                                                                                         
+## [204] "summary(iva_ward_k2, indvalcomp = TRUE)"                                                                                                                               
+## [205] "colSums(mi_fam)"                                                                                                                                                       
+## [206] "(p_ward_adj <- p.adjust(iva_ward_k2$sign$p.value))"                                                                                                                    
+## [207] "(iva_ward_boot <- strassoc("                                                                                                                                           
+## [208] "  X = mi_fam,"                                                                                                                                                         
+## [209] "  cluster = grupos_ward_k2,"                                                                                                                                           
+## [210] "  func = \"IndVal.g\","                                                                                                                                                
+## [211] "  nboot = 1000))"                                                                                                                                                      
+## [212] "#'"                                                                                                                                                                    
+## [213] "phi_ward_k2 <- multipatt("                                                                                                                                             
+## [214] "  mi_fam,"                                                                                                                                                             
+## [215] "  grupos_ward_k2,"                                                                                                                                                     
+## [216] "  func = \"r.g\","                                                                                                                                                     
+## [217] "  max.order = 2,"                                                                                                                                                      
+## [218] "  control = how(nperm = 999))"                                                                                                                                         
+## [219] "summary(phi_ward_k2)"                                                                                                                                                  
+## [220] "colSums(mi_fam)"                                                                                                                                                       
+## [221] "(phi_ward_boot <- strassoc("                                                                                                                                           
+## [222] "  X = mi_fam,"                                                                                                                                                         
+## [223] "  cluster = grupos_ward_k2,"                                                                                                                                           
+## [224] "  func = \"r.g\","                                                                                                                                                     
+## [225] "  nboot = 1000))"                                                                                                                                                      
+## [226] "#'"                                                                                                                                                                    
+## [227] "#' Cargar otros paquetes"                                                                                                                                              
+## [228] "library(ape)"                                                                                                                                                          
+## [229] "library(spdep)"                                                                                                                                                        
+## [230] "library(ade4)"                                                                                                                                                         
+## [231] "library(adegraphics)"                                                                                                                                                  
+## [232] "library(adespatial)"                                                                                                                                                   
+## [233] "library(gridExtra)"                                                                                                                                                    
+## [234] "library(grid)"                                                                                                                                                         
+## [235] "library(gtable)"                                                                                                                                                       
+## [236] "library(magrittr)"                                                                                                                                                     
+## [237] "library(plyr)"                                                                                                                                                         
+## [238] "library(SpadeR)"                                                                                                                                                       
+## [239] "library(iNEXT)"                                                                                                                                                        
+## [240] "library(vegetarian)"                                                                                                                                                   
+## [241] "source('https://raw.githubusercontent.com/maestria-geotel-master/unidad-3-asignacion-1-vecindad-autocorrelacion-espacial/master/lisaclusters.R')"                      
+## [242] "#' Tecnicas de ordenacion"                                                                                                                                             
+## [243] "env_select <- bci_env_grid %>% "                                                                                                                                       
+## [244] "  st_drop_geometry %>%"                                                                                                                                                
+## [245] "  dplyr::select_if(is.numeric) %>%"                                                                                                                                    
+## [246] "  dplyr::select(-id) %>%"                                                                                                                                              
+## [247] "  dplyr::select(Al, Cu, Mn, N, N.min., pH, elevacion_media, heterogeneidad_ambiental, orientacion_media)"                                                              
+## [248] "env_select %>% tibble"                                                                                                                                                 
+## [249] "#' Analisis de Componentes Principales"                                                                                                                                
+## [250] "env_select_pca <- rda(env_select, scale = TRUE)"                                                                                                                       
+## [251] "env_select_pca"                                                                                                                                                        
+## [252] "summary(env_select_pca)"                                                                                                                                               
+## [253] "#'"                                                                                                                                                                    
+## [254] "par(mfrow = c(1, 2))"                                                                                                                                                  
+## [255] "cleanplot.pca(env_select_pca, scaling = 1, mar.percent = 0.08, cex.char1 = 0.5)"                                                                                       
+## [256] "cleanplot.pca(env_select_pca, scaling = 2, mar.percent = 0.04, cex.char1 = 0.5)"                                                                                       
+## [257] "par(mfrow = c(1, 1))"                                                                                                                                                  
+## [258] "#'"                                                                                                                                                                    
+## [259] "(env_agrupamiento <- hclust(dist(scale(env_select)), 'ward.D'))"                                                                                                       
+## [260] "(env_grupos <- cutree(env_agrupamiento, k = 2))"                                                                                                                       
+## [261] "(mi_cluster <- factor(env_grupos))"                                                                                                                                    
+## [262] "(mi_cluster_l <- levels(mi_cluster))"                                                                                                                                  
+## [263] "(mi_cluster_l_seq <- 1:length(mi_cluster_l))"                                                                                                                          
+## [264] "(puntuaciones <- scores(env_select_pca, display = 'wa', scaling = 1))"                                                                                                 
+## [265] "par(mfrow = c(1, 2))"                                                                                                                                                  
+## [266] "grafico_base <- plot("                                                                                                                                                 
+## [267] "  env_select_pca,"                                                                                                                                                     
+## [268] "  display = \"wa\","                                                                                                                                                   
+## [269] "  scaling = 1,"                                                                                                                                                        
+## [270] "  type = \"n\","                                                                                                                                                       
+## [271] "  main = \"PCA según grupos por variables seleccionadas\""                                                                                                             
+## [272] ")"                                                                                                                                                                     
+## [273] "abline(v = 0, lty = \"dotted\")"                                                                                                                                       
+## [274] "abline(h = 0, lty = \"dotted\")"                                                                                                                                       
+## [275] "for (i in mi_cluster_l_seq) {"                                                                                                                                         
+## [276] "  points(puntuaciones[mi_cluster == i, ],"                                                                                                                             
+## [277] "         pch = (14 + i),"                                                                                                                                              
+## [278] "         cex = 2,"                                                                                                                                                     
+## [279] "         col = i + 1)"                                                                                                                                                 
+## [280] "}"                                                                                                                                                                     
+## [281] "text(puntuaciones, row.names(env_select), cex = 1, pos = 3)"                                                                                                           
+## [282] "legend("                                                                                                                                                               
+## [283] "  \"topleft\", # Otras alternativas: \"bottomleft\", \"bottomright\" y \"topleft\""                                                                                    
+## [284] "  paste(\"Grupo\", c(mi_cluster_l_seq)),"                                                                                                                              
+## [285] "  pch = 14 + c(mi_cluster_l_seq),"                                                                                                                                     
+## [286] "  col = 1 + c(mi_cluster_l_seq),"                                                                                                                                      
+## [287] "  pt.cex = 2"                                                                                                                                                          
+## [288] ")"                                                                                                                                                                     
+## [289] "#'"                                                                                                                                                                    
+## [290] "(mi_cluster_anterior <- grupos_compl_k2)"                                                                                                                              
+## [291] "(mi_cluster_anterior_l <- levels(mi_cluster_anterior))"                                                                                                                
+## [292] "(mi_cluster_anterior_l_seq <- 1:length(mi_cluster_anterior_l))"                                                                                                        
+## [293] "grafico_base <- plot("                                                                                                                                                 
+## [294] "  env_select_pca,"                                                                                                                                                     
+## [295] "  display = \"wa\","                                                                                                                                                   
+## [296] "  scaling = 1,"                                                                                                                                                        
+## [297] "  type = \"n\","                                                                                                                                                       
+## [298] "  main = \"PCA según grupos por enlace completo\""                                                                                                                     
+## [299] ")"                                                                                                                                                                     
+## [300] "abline(v = 0, lty = \"dotted\")"                                                                                                                                       
+## [301] "abline(h = 0, lty = \"dotted\")"                                                                                                                                       
+## [302] "for (i in mi_cluster_anterior_l_seq) {"                                                                                                                                
+## [303] "  points(puntuaciones[mi_cluster_anterior == i, ],"                                                                                                                    
+## [304] "         pch = (14 + i),"                                                                                                                                              
+## [305] "         cex = 2,"                                                                                                                                                     
+## [306] "         col = i + 1)"                                                                                                                                                 
+## [307] "}"                                                                                                                                                                     
+## [308] "text(puntuaciones, row.names(env_select), cex = 1, pos = 3)"                                                                                                           
+## [309] "legend("                                                                                                                                                               
+## [310] "  \"topleft\", # Otras alternativas: \"bottomleft\", \"bottomright\" y \"topleft\""                                                                                    
+## [311] "  paste(\"Grupo\", c(mi_cluster_anterior_l_seq)),"                                                                                                                     
+## [312] "  pch = 14 + c(mi_cluster_anterior_l_seq),"                                                                                                                            
+## [313] "  col = 1 + c(mi_cluster_anterior_l_seq),"                                                                                                                             
+## [314] "  pt.cex = 2"                                                                                                                                                          
+## [315] ")"                                                                                                                                                                     
+## [316] "par(mfrow = c(1, 1))"                                                                                                                                                  
+## [317] "#'"                                                                                                                                                                    
+## [318] "#' PCA a datos de comunidad"                                                                                                                                           
+## [319] "mi_fam_hel <- decostand(mi_fam, method = 'hellinger')"                                                                                                                 
+## [320] "mi_fam_hel %>% tibble"                                                                                                                                                 
+## [321] "mi_fam_hel_pca <- rda(mi_fam_hel)"                                                                                                                                     
+## [322] "summary(mi_fam_hel_pca)"                                                                                                                                               
+## [323] "#'"                                                                                                                                                                    
+## [324] "biplot("                                                                                                                                                               
+## [325] "  mi_fam_hel_pca,"                                                                                                                                                     
+## [326] "  main = \"PCA escalamiento 2 con ajuste a variables seleccionadas\")"                                                                                                 
+## [327] "(mi_fam_hel_pca_envfit <- envfit(mi_fam_hel_pca, env_select, scaling = 2))"                                                                                            
+## [328] "plot(mi_fam_hel_pca_envfit, p.max = 0.05 , col = 3)"                                                                                                                   
+## [329] "#'"                                                                                                                                                                    
+## [330] "#' Analisis de Correspondencia"                                                                                                                                        
+## [331] "mi_fam_ca <- cca(mi_fam)"                                                                                                                                              
+## [332] "summary(mi_fam_ca)"                                                                                                                                                    
+## [333] "summary(mi_fam_ca, scaling = 1)"                                                                                                                                       
+## [334] "par(mfrow = c(1, 2))"                                                                                                                                                  
+## [335] "plot(mi_fam_ca,"                                                                                                                                                       
+## [336] "     scaling = 1,"                                                                                                                                                     
+## [337] "     main = \"Análisis de correspondencia, escalamiento 1\""                                                                                                           
+## [338] ")"                                                                                                                                                                     
+## [339] "plot(mi_fam_ca,"                                                                                                                                                       
+## [340] "     scaling = 2, # Por defecto scaling=2, lo escribo sólo para fines didáticos"                                                                                       
+## [341] "     main = \"Análisis de correspondencia, escalamiento 2\")"                                                                                                          
+## [342] "par(mfrow = c(1, 1))"                                                                                                                                                  
+## [343] "#'"                                                                                                                                                                    
+## [344] "#' Analisis de Redundancia"                                                                                                                                            
+## [345] "mi_fam_hel <- decostand(mi_fam, method = 'hellinger')"                                                                                                                 
+## [346] "mi_fam_hel %>% tibble"                                                                                                                                                 
+## [347] "mi_fam_hel_rda_select <- rda(mi_fam_hel ~ ., env_select)"                                                                                                              
+## [348] "summary(mi_fam_hel_rda_select)"                                                                                                                                        
+## [349] "#'"                                                                                                                                                                    
+## [350] "RsquareAdj(mi_fam_hel_rda_select)$adj.r.squared"                                                                                                                       
+## [351] "vif.cca(mi_fam_hel_rda_select)"                                                                                                                                        
+## [352] "#' "                                                                                                                                                                   
+## [353] "#' Analisis de Correspondencia Canonica"                                                                                                                               
+## [354] "mi_fam_cca_select <- cca(mi_fam ~ ., env_select)"                                                                                                                      
+## [355] "summary(mi_fam_cca_select)"                                                                                                                                            
+## [356] "RsquareAdj(mi_fam_cca_select)"                                                                                                                                         
+## [357] "#' "                                                                                                                                                                   
+## [358] "plot(mi_fam_cca_select,"                                                                                                                                               
+## [359] "     scaling = 2,"                                                                                                                                                     
+## [360] "     display = c(\"sp\", \"lc\", \"cn\"),"                                                                                                                             
+## [361] "     main = \"Triplot de CCA especies según variables seleccionadas, escalamiento 2\""                                                                                 
+## [362] ")"                                                                                                                                                                     
+## [363] "#' "                                                                                                                                                                   
+## [364] "#' Analisis de Diversidad"                                                                                                                                             
+## [365] "#' "                                                                                                                                                                   
+## [366] "(indices <- alpha_div(mi_fam))"                                                                                                                                        
+## [367] "indices_sitios <- indices[-c(6,7,34,38,39),] #Para sitios con mas de una especie"                                                                                      
+## [368] "pairs(indices_sitios,"                                                                                                                                                 
+## [369] "      lower.panel = panel.smooth,"                                                                                                                                     
+## [370] "      upper.panel = panel.cor,"                                                                                                                                        
+## [371] "      diag.panel = panel.hist,"                                                                                                                                        
+## [372] "      main = \"Pearson Correlation Matrix\")"                                                                                                                          
+## [373] "#' "                                                                                                                                                                   
+## [374] "indices_env <- bind_cols("                                                                                                                                             
+## [375] "  indices_sitios,"                                                                                                                                                     
+## [376] "  bci_env_grid[-c(6,7,34,38,39),] %>%"                                                                                                                                 
+## [377] "    select_if(is.numeric) %>%"                                                                                                                                         
+## [378] "    st_drop_geometry %>%"                                                                                                                                              
+## [379] "    select(-id) %>% "                                                                                                                                                  
+## [380] "    select(Mg, Zn, N.min., N, pH, orientacion_media, geomorf_interfluvio_pct))"                                                                                        
+## [381] "indices_env %>% tibble"                                                                                                                                                
+## [382] "ezCorM(indices_env, r_size_lims = c(3,5), label_size = 4)"                                                                                                             
+## [383] "#'"                                                                                                                                                                    
+## [384] "#' Modelos de abundancia de especies"                                                                                                                                  
+## [385] "riqueza <- specnumber(mi_fam)"                                                                                                                                         
+## [386] "abundancia <- rowSums(mi_fam)"                                                                                                                                         
+## [387] "(rango_abun <- range(abundancia))"                                                                                                                                     
+## [388] "riqueza_menor_abun <- rarefy(mi_fam, sample = rango_abun[1])"                                                                                                          
+## [389] "sort(riqueza)"                                                                                                                                                         
+## [390] "sort(round(riqueza_menor_abun))"                                                                                                                                       
+## [391] "rarecurve("                                                                                                                                                            
+## [392] "  mi_fam,"                                                                                                                                                             
+## [393] "  step = 1,"                                                                                                                                                           
+## [394] "  sample = rango_abun[1],"                                                                                                                                             
+## [395] "  xlab = \"Número de individuos (tamaño de muestra)\","                                                                                                                
+## [396] "  ylab = \"Especies\","                                                                                                                                                
+## [397] "  label = TRUE,"                                                                                                                                                       
+## [398] "  col = \"blue\""                                                                                                                                                      
+## [399] ")"                                                                                                                                                                     
+## [400] "#' Estimacion de la riqueza para toda la comunidad y para los grupos"                                                                                                  
+## [401] "mi_fam_combinada <- colSums(mi_fam)"                                                                                                                                   
+## [402] "mi_fam_combinada %>% sort"                                                                                                                                             
+## [403] "mi_fam_combinada_chao <- estimacion_riqueza_chao("                                                                                                                     
+## [404] "  mc = mi_fam_combinada,"                                                                                                                                              
+## [405] "  n_raras = 22)"                                                                                                                                                       
+## [406] "mi_fam_combinada_chao$asintoticos_estimacion"                                                                                                                          
+## [407] "mi_fam_combinada_chao$no_asintoticos_rarefaccion_extrapolacion"                                                                                                        
+## [408] "mi_fam_combinada_chao$no_asintoticos_rarefaccion_extrapolacion_grafico"                                                                                                
+## [409] "#'"                                                                                                                                                                    
+## [410] "mi_fam_k2 <- mi_fam %>%"                                                                                                                                               
+## [411] "  mutate(g=grupos_ward_k2) %>%"                                                                                                                                        
+## [412] "  group_by(g) %>%"                                                                                                                                                     
+## [413] "  summarise_all(sum) %>%"                                                                                                                                              
+## [414] "  select(-g) %>% "                                                                                                                                                     
+## [415] "  data.frame"                                                                                                                                                          
+## [416] "mi_fam_k2 %>% rowSums %>% sort"                                                                                                                                        
+## [417] "mi_fam_k2_chao <- estimacion_riqueza_chao("                                                                                                                            
+## [418] "  mc = mi_fam_k2,"                                                                                                                                                     
+## [419] "  n_raras = 22)"                                                                                                                                                       
+## [420] "mi_fam_k2_chao$asintoticos_estimacion"                                                                                                                                 
+## [421] "mi_fam_k2_chao$no_asintoticos_rarefaccion_extrapolacion"                                                                                                               
+## [422] "mi_fam_k2_chao$no_asintoticos_rarefaccion_extrapolacion_grafico"                                                                                                       
+## [423] "#' "                                                                                                                                                                   
+## [424] "#' Diversidad beta"                                                                                                                                                    
+## [425] "determinar_contrib_local_y_especie("                                                                                                                                   
+## [426] "  mc = mi_fam,"                                                                                                                                                        
+## [427] "  alpha = 0.05,"                                                                                                                                                       
+## [428] "  nperm = 9999,"                                                                                                                                                       
+## [429] "  metodo = 'hellinger')"                                                                                                                                               
+## [430] "#' "                                                                                                                                                                   
+## [431] "#' Analisis de Ecologia Espacial"                                                                                                                                      
+## [432] "#'"                                                                                                                                                                    
+## [433] "#' Transformar matriz a Hellinger y generar vecindad"                                                                                                                  
+## [434] "mi_fam_hel <- decostand (mi_fam, \"hellinger\")"                                                                                                                       
+## [435] "bci_env_grid_sp <- bci_env_grid %>% as_Spatial"                                                                                                                        
+## [436] "centroides <- bci_env_grid %>% st_centroid"                                                                                                                            
+## [437] "bci_xy <- centroides %>% st_coordinates %>% as.data.frame"                                                                                                             
+## [438] "(vecindad <- bci_env_grid_sp %>% poly2nb)"                                                                                                                             
+## [439] "(pesos_b <- nb2listw(vecindad, style = 'B'))"                                                                                                                          
+## [440] "plot(bci_env_grid_sp)"                                                                                                                                                 
+## [441] "plot(vecindad, coords = bci_xy, add=T, col = 'red')"                                                                                                                   
+## [442] "#'"                                                                                                                                                                    
+## [443] "#' Autocorrelacion mediante correlograma para variables ambientales"                                                                                                   
+## [444] "bci_env_grid_num <- bci_env_grid %>%"                                                                                                                                  
+## [445] "  st_drop_geometry %>% "                                                                                                                                               
+## [446] "  select_if(is.numeric) %>% "                                                                                                                                          
+## [447] "  select(B, Ca, Mg, Zn, N, pH, N.min.)"                                                                                                                                
+## [448] "suppressWarnings(auto_amb <- calcular_autocorrelacion("                                                                                                                
+## [449] "  df_fuente = bci_env_grid_num,"                                                                                                                                       
+## [450] "  orden = 9,"                                                                                                                                                          
+## [451] "  obj_vecindad = vecindad))"                                                                                                                                           
+## [452] "print(auto_amb, digits = 2, p.adj.method = 'holm')"                                                                                                                    
+## [453] "dim_panel <- rev(n2mfrow(ncol(bci_env_grid_num)))"                                                                                                                     
+## [454] "par(mfrow = dim_panel)"                                                                                                                                                
+## [455] "suppressWarnings(invisible(lapply(auto_amb, function(x) plot(x, main = x$var))))"                                                                                      
+## [456] "#'"                                                                                                                                                                    
+## [457] "#' Correlograma de Mantel sin tendencias espaciales"                                                                                                                   
+## [458] "mi_fam_sin_tendencia <- resid("                                                                                                                                        
+## [459] "  lm(as.matrix(mi_fam_hel) ~ .,"                                                                                                                                       
+## [460] "     data = bci_xy))"                                                                                                                                                  
+## [461] "mi_fam_sin_tendencia_d <- dist(mi_fam_sin_tendencia)"                                                                                                                  
+## [462] "(mi_fam_correlograma <- mantel.correlog("                                                                                                                              
+## [463] "  mi_fam_sin_tendencia_d,"                                                                                                                                             
+## [464] "  XY = bci_xy,"                                                                                                                                                        
+## [465] "  nperm = 999))"                                                                                                                                                       
+## [466] "plot(mi_fam_correlograma)"                                                                                                                                             
+## [467] "#'"                                                                                                                                                                    
+## [468] "#' Calculo de I de Moran y mapas Lisa para especies sin tendencia y algunas variables ambientales"                                                                     
+## [469] "#'"                                                                                                                                                                    
+## [470] "(autocor_global_residuos <- sapply("                                                                                                                                   
+## [471] "  dimnames(mi_fam_sin_tendencia)[[2]],"                                                                                                                                
+## [472] "  function(x)"                                                                                                                                                         
+## [473] "    moran.mc("                                                                                                                                                         
+## [474] "      x = mi_fam_sin_tendencia[,x],"                                                                                                                                   
+## [475] "      listw = pesos_b,"                                                                                                                                                
+## [476] "      zero.policy = T,"                                                                                                                                                
+## [477] "      nsim = 9999),"                                                                                                                                                   
+## [478] "  simplify = F))"                                                                                                                                                      
+## [479] "#'"                                                                                                                                                                    
+## [480] "bci_env_grid_num_sf <- bci_env_grid %>%"                                                                                                                               
+## [481] "  select_if(is.numeric) %>% "                                                                                                                                          
+## [482] "  select(-id, -UTM.EW, -UTM.NS)"                                                                                                                                       
+## [483] "bci_env_grid_num_sf %>% tibble"                                                                                                                                        
+## [484] "lisamaps_amb <- sapply(grep('geometry', names(bci_env_grid_num_sf), invert = T, value = T),"                                                                           
+## [485] "                       function(x) {"                                                                                                                                  
+## [486] "                         m <- lisamap(objesp = bci_env_grid_num_sf[x],"                                                                                                
+## [487] "                                      var = x,"                                                                                                                        
+## [488] "                                      pesos = pesos_b,"                                                                                                                
+## [489] "                                      tituloleyenda = 'Significancia (\"x-y\", léase como \"x\" rodeado de \"y\")',"                                                   
+## [490] "                                      leyenda = F,"                                                                                                                    
+## [491] "                                      anchuratitulo = 50,"                                                                                                             
+## [492] "                                      tamanotitulo = 10,"                                                                                                              
+## [493] "                                      fuentedatos = '\\nhttp://ctfs.si.edu/webatlas/datasets/bci/',"                                                                   
+## [494] "                                      titulomapa = paste0('Clusters LISA de \"', x, '\"'))"                                                                            
+## [495] "                         return(m$grafico)"                                                                                                                            
+## [496] "                       }, simplify = F"                                                                                                                                
+## [497] ")"                                                                                                                                                                     
+## [498] "lisamaps_amb$leyenda <- gtable_filter(ggplot_gtable(ggplot_build(lisamaps_amb[[1]] + theme(legend.position=\"bottom\"))), \"guide-box\")"                              
+## [499] "grid.arrange(do.call('arrangeGrob', c(lisamaps_amb[1:12], nrow = 3)), lisamaps_amb$leyenda, heights=c(1.1, 0.1), nrow = 2)"                                            
+## [500] "grid.arrange(do.call('arrangeGrob', c(lisamaps_amb[13:22], nrow = 3)), lisamaps_amb$leyenda, heights=c(1.1, 0.1), nrow = 2)"                                           
+## [501] "grid.arrange(do.call('arrangeGrob', c(lisamaps_amb[23:31], nrow = 3)), lisamaps_amb$leyenda, heights=c(1.1, 0.1), nrow = 2)"                                           
+## [502] "#'"                                                                                                                                                                    
+## [503] "mi_fam_sintendencia_sf <- bci_env_grid %>% select %>% bind_cols(mi_fam_sin_tendencia %>% as.data.frame)"                                                               
+## [504] "lisamaps_mifam_sintendencia <- sapply("                                                                                                                                
+## [505] "  grep('geometry', names(mi_fam_sintendencia_sf), invert = T, value = T),"                                                                                             
+## [506] "  function(x) {"                                                                                                                                                       
+## [507] "    m <- lisamap(objesp = mi_fam_sintendencia_sf[x],"                                                                                                                  
+## [508] "                 var = x,"                                                                                                                                             
+## [509] "                 pesos = pesos_b,"                                                                                                                                     
+## [510] "                 tituloleyenda = 'Significancia (\"x-y\", léase como \"x\" rodeado de \"y\")',"                                                                        
+## [511] "                 leyenda = F,"                                                                                                                                         
+## [512] "                 anchuratitulo = 50,"                                                                                                                                  
+## [513] "                 tamanotitulo = 10,"                                                                                                                                   
+## [514] "                 fuentedatos = '\\nhttp://ctfs.si.edu/webatlas/datasets/bci/',"                                                                                        
+## [515] "                 titulomapa = paste0('Clusters LISA de \"', x, '\"'))"                                                                                                 
+## [516] "    # dev.new();print(m$grafico)"                                                                                                                                      
+## [517] "    return(m$grafico)"                                                                                                                                                 
+## [518] "  }, simplify = F"                                                                                                                                                     
+## [519] ")"                                                                                                                                                                     
+## [520] "lisamaps_mifam_sintendencia$leyenda <- gtable_filter(ggplot_gtable(ggplot_build(lisamaps_mifam_sintendencia[[2]] + theme(legend.position=\"bottom\"))), \"guide-box\")"
+## [521] "grid.arrange(do.call('arrangeGrob', c(lisamaps_mifam_sintendencia, nrow = 3)), heights=c(1.1, 0.1))"
+\end{verbatim}
 
 \section*{Referencias}\label{referencias}
 \addcontentsline{toc}{section}{Referencias}

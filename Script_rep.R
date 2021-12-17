@@ -3,36 +3,11 @@
 library(vegan)
 library(tidyverse)
 library(sf)
-library(ape)
-library(spdep)
-library(ade4)
-library(adegraphics)
-library(adespatial)
-library(gridExtra)
-library(grid)
-library(gtable)
-library(magrittr)
-library(broom)
-library(cluster)
-library(gclus)
-library(pvclust)
-library(mapview)
-library(RColorBrewer)
-library(plyr)
-library(SpadeR)
-library(iNEXT)
-library(vegetarian)
 source('biodata/funciones.R')
-source('https://raw.githubusercontent.com/maestria-geotel-master/unidad-3-asignacion-1-vecindad-autocorrelacion-espacial/master/lisaclusters.R')
 #'
 #' Cargar datos
 load('biodata/Chrysobalanaceae.Rdata')
 load('biodata/matriz_ambiental.Rdata')
-mi_fam <- mc_chrys
-(colnames(mi_fam) <- make.cepnames(colnames(mi_fam)))
-(df_equivalencias <- data.frame(
-  nombre_original = colnames(mc_chrys),
-  colnames(mi_fam)))
 bci_env_grid %>% tibble
 censo_chrys %>% tibble
 #'
@@ -40,11 +15,6 @@ grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
 table(grupos_ward_k2)
 grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
 table(grupos_compl_k2)
-#'
-#' Cargar paletas de colores
-rojo <- colorRampPalette(brewer.pal(8, "Reds"))
-rojo_inv <- colorRampPalette(rev(brewer.pal(8, "Reds")))
-colores_grupos <- brewer.pal(8, "Accent")
 #'
 #' Analisis Exploratorio
 #' Lista de especies: 4
@@ -65,6 +35,27 @@ abun_sp <- censo_chrys %>%
   count() %>% 
   arrange(desc(n))
 abun_sp
+#'
+#' Cargar otros paquetes
+library(cluster)
+library(gclus)
+library(pvclust)
+library(mapview)
+library(RColorBrewer)
+library(broom)
+library(indicspecies)
+#'
+#' Crear abreviaturas de la familia
+mi_fam <- mc_chrys
+(colnames(mi_fam) <- make.cepnames(colnames(mi_fam)))
+(df_equivalencias <- data.frame(
+  nombre_original = colnames(mc_chrys),
+  colnames(mi_fam)))
+#'
+#'#' Cargar paletas de colores
+rojo <- colorRampPalette(brewer.pal(8, "Reds"))
+rojo_inv <- colorRampPalette(rev(brewer.pal(8, "Reds")))
+colores_grupos <- brewer.pal(8, "Accent")
 #'
 #' Analisis de Agrupamiento
 #'
@@ -232,7 +223,22 @@ colSums(mi_fam)
   cluster = grupos_ward_k2,
   func = "r.g",
   nboot = 1000))
-#'   
+#'
+#' Cargar otros paquetes
+library(ape)
+library(spdep)
+library(ade4)
+library(adegraphics)
+library(adespatial)
+library(gridExtra)
+library(grid)
+library(gtable)
+library(magrittr)
+library(plyr)
+library(SpadeR)
+library(iNEXT)
+library(vegetarian)
+source('https://raw.githubusercontent.com/maestria-geotel-master/unidad-3-asignacion-1-vecindad-autocorrelacion-espacial/master/lisaclusters.R')
 #' Tecnicas de ordenacion
 env_select <- bci_env_grid %>% 
   st_drop_geometry %>%
@@ -513,4 +519,3 @@ lisamaps_mifam_sintendencia <- sapply(
 )
 lisamaps_mifam_sintendencia$leyenda <- gtable_filter(ggplot_gtable(ggplot_build(lisamaps_mifam_sintendencia[[2]] + theme(legend.position="bottom"))), "guide-box")
 grid.arrange(do.call('arrangeGrob', c(lisamaps_mifam_sintendencia, nrow = 3)), heights=c(1.1, 0.1))
-#'
