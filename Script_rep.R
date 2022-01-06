@@ -1,3 +1,6 @@
+#' Script Reproducible
+#' 
+#' 
 #' Cargar paquetes
 #'
 library(vegan)
@@ -10,11 +13,6 @@ load('biodata/Chrysobalanaceae.Rdata')
 load('biodata/matriz_ambiental.Rdata')
 bci_env_grid %>% tibble
 censo_chrys %>% tibble
-#'
-grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
-table(grupos_ward_k2)
-grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
-table(grupos_compl_k2)
 #'
 #' Analisis Exploratorio
 #' Lista de especies: 4
@@ -36,6 +34,7 @@ abun_sp <- censo_chrys %>%
   arrange(desc(n))
 abun_sp
 #'
+#' Analisis de Agrupamiento
 #' Cargar otros paquetes
 library(cluster)
 library(gclus)
@@ -52,23 +51,29 @@ mi_fam <- mc_chrys
   nombre_original = colnames(mc_chrys),
   colnames(mi_fam)))
 #'
+grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
+table(grupos_ward_k2)
+grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
+table(grupos_compl_k2)
+#'
 #'#' Cargar paletas de colores
 rojo <- colorRampPalette(brewer.pal(8, "Reds"))
 rojo_inv <- colorRampPalette(rev(brewer.pal(8, "Reds")))
 colores_grupos <- brewer.pal(8, "Accent")
 #'
-#' Analisis de Agrupamiento
+#' Transformar la matriz de comunidad
 #'
 mi_fam_norm <- decostand(mi_fam, "normalize")
 mi_fam_norm_d <- vegdist(mi_fam_norm, "euc")
 mi_fam_norm_d %>% tidy
 attr(mi_fam_norm_d, "labels") <- rownames(mi_fam)
-#' Enlace completo
+#' 
+#' Agrupamiento por Enlace completo
 (cl_complete <- hclust(mi_fam_norm_d, method = 'complete'))
 plot(cl_complete, labels = rownames(mi_fam), hang = -1,
      main = "Sitios de BCI según composición de especies de Chrysobalanaceae\nEnlace completo a partir de matriz de distancia de cuerdas",
      xlab = 'Sitios', ylab = 'Altura')
-#' Por medio de Ward
+#' Agrupamiento por medio de Ward
 (cl_ward <- hclust(mi_fam_norm_d, method = 'ward.D2'))
 plot(cl_ward, labels = rownames(mi_fam), hang = -1,
      main = "Sitios de BCI según composición de especies de Chrysobalanaceae\nMétodo de Ward a partir de matriz de distancia de cuerdas",
@@ -83,6 +88,7 @@ lista_cl <- list(
 par(mfrow = c(1,2))
 invisible(map(names(lista_cl), function(x) plot(lista_cl[[x]], main = x, hang = -1, cex.lab = 1)))
 par(mfrow = c(1,1))
+#'
 map_df(lista_cl, function(x) {
   coph_d <- cophenetic(x)
   corr <- cor(mi_fam_norm_d, coph_d)
@@ -125,8 +131,8 @@ anch_sil_compl <- calcular_anchuras_siluetas(
   distancias = mi_fam_norm_d, 
   cluster = lista_cl$cl_complete)
 anch_sil_compl
-(grupos_ward_k2 <- as.factor(cutree(lista_cl$cl_ward, k = 2)))
-table(grupos_ward_k2)
+(grupos_compl_k2 <- as.factor(cutree(lista_cl$cl_complete, k = 2)))
+table(grupos_compl_k2)
 #'
 w_dend_reord <- reorder.hclust(lista_cl$cl_complete, mi_fam_norm_d)
 plot(w_dend_reord, hang = -1)
@@ -155,7 +161,7 @@ pvrect(cl_pvclust_compl, alpha = 0.91, border = 4)
 table(grupos_compl_k2)
 saveRDS(grupos_compl_k2, 'grupos_compl_k2.RDS')
 #'
-#' Mapa de grupos por medio de Ward
+#' Relación de Variables ambientales con grupos de Ward
 (m_amb_ward_k2 <- bci_env_grid %>%
     select_if(is.numeric) %>% select(-id) %>% 
     mutate(grupos_ward_k2) %>%
@@ -179,6 +185,7 @@ m_amb_ward_k2 %>%
   theme(legend.position="none") +
   facet_wrap(~ variable, scales = 'free_y')
 #' 
+#' Mapa de grupos por medio de Ward
 mapa_ward_k2 <- mapView(
   bci_env_grid %>% mutate(grupos_ward_k2),
   layer.name = 'Grupos (2) Ward',
@@ -240,12 +247,24 @@ library(iNEXT)
 library(vegetarian)
 source('https://raw.githubusercontent.com/maestria-geotel-master/unidad-3-asignacion-1-vecindad-autocorrelacion-espacial/master/lisaclusters.R')
 #' Tecnicas de ordenacion
+#' 
+#' Hacer una matriz de variables ambientales solo con variables seleccionadas
 env_select <- bci_env_grid %>% 
   st_drop_geometry %>%
   dplyr::select_if(is.numeric) %>%
   dplyr::select(-id) %>%
   dplyr::select(Al, Cu, Mn, N, N.min., pH, elevacion_media, heterogeneidad_ambiental, orientacion_media)
 env_select %>% tibble
+#' 
+#' Analisis de Redundancia
+mi_fam_hel <- decostand(mi_fam, method = 'hellinger')
+mi_fam_hel %>% tibble
+mi_fam_hel_rda_select <- rda(mi_fam_hel ~ ., env_select)
+summary(mi_fam_hel_rda_select)
+#'
+RsquareAdj(mi_fam_hel_rda_select)$adj.r.squared
+vif.cca(mi_fam_hel_rda_select)
+#' 
 #' Analisis de Componentes Principales
 env_select_pca <- rda(env_select, scale = TRUE)
 env_select_pca
@@ -341,15 +360,6 @@ plot(mi_fam_ca,
      main = "Análisis de correspondencia, escalamiento 2")
 par(mfrow = c(1, 1))
 #'
-#' Analisis de Redundancia
-mi_fam_hel <- decostand(mi_fam, method = 'hellinger')
-mi_fam_hel %>% tibble
-mi_fam_hel_rda_select <- rda(mi_fam_hel ~ ., env_select)
-summary(mi_fam_hel_rda_select)
-#'
-RsquareAdj(mi_fam_hel_rda_select)$adj.r.squared
-vif.cca(mi_fam_hel_rda_select)
-#' 
 #' Analisis de Correspondencia Canonica
 mi_fam_cca_select <- cca(mi_fam ~ ., env_select)
 summary(mi_fam_cca_select)

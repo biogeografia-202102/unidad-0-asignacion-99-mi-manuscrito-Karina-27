@@ -18,31 +18,12 @@ source('biodata/funciones.R')
 #' 
 load('biodata/Chrysobalanaceae.Rdata')
 mi_fam <- mc_chrys
-grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
-table(grupos_upgma_k2)
 grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
 table(grupos_ward_k2)
 grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
 table(grupos_compl_k2)
 #' 
 #' ## Análisis de especies indicadoras mediante IndVal
-#' 
-#' ### UPGMA
-#' 
-iva_upgma_k2 <- multipatt(
-  x = mi_fam,
-  cluster = grupos_upgma_k2,
-  func = 'IndVal.g',
-  max.order = 1,
-  control = how(nperm = 999))
-summary(iva_upgma_k2, indvalcomp = TRUE)
-colSums(mi_fam)
-(p_upgma_adj <- p.adjust(iva_upgma_k2$sign$p.value))
-(iva_upgma_boot <- strassoc(
-  X = mi_fam,
-  cluster = grupos_upgma_k2,
-  func = "IndVal.g",
-  nboot = 1000))
 #' 
 #' Ward
 #' 
@@ -71,7 +52,7 @@ iva_compl_k2 <- multipatt(
   control = how(nperm = 999))
 summary(iva_compl_k2, indvalcomp = TRUE)
 colSums(mi_fam)
-(p_upgma_adj <- p.adjust(iva_compl_k2$sign$p.value))
+(p_compl_adj <- p.adjust(iva_compl_k2$sign$p.value))
 (iva_compl_boot <- strassoc(
   X = mi_fam,
   cluster = grupos_compl_k2,
@@ -81,22 +62,6 @@ colSums(mi_fam)
 #'
 #' ## Análisis de especies con preferencia por hábitat mediante el coeficiente de correlación biserial puntual
 #' 
-#' ### UPGMA
-#' 
-phi_upgma_k2 <- multipatt(
-  mi_fam,
-  grupos_upgma_k2,
-  func = "r.g",
-  max.order = 1,
-  control = how(nperm = 999))
-summary(phi_upgma_k2)
-colSums(mi_fam)
-(phi_upgma_boot <- strassoc(
-  X = mi_fam,
-  cluster = grupos_upgma_k2,
-  func = "r.g",
-  nboot = 1000))
-#'
 #' Ward
 #' 
 phi_ward_k2 <- multipatt(
@@ -124,7 +89,7 @@ phi_compl_k2 <- multipatt(
   control = how(nperm = 999))
 summary(phi_compl_k2)
 colSums(mi_fam)
-(phi_upgma_boot <- strassoc(
+(phi_compl_boot <- strassoc(
   X = mi_fam,
   cluster = grupos_compl_k2,
   func = "r.g",

@@ -46,7 +46,7 @@ mi_fam_norm_d %>% tidy
 #'
 #' Para la exploración visual, generaré los objetos de cluster dentro de una lista:
 #' 
-lista_cl <- list(
+lista_cl_2 <- list(
   cl_single = hclust(mi_fam_norm_d, method = 'single'),
   cl_complete = hclust(mi_fam_norm_d, method = 'complete'),
   cl_upgma = hclust(mi_fam_norm_d, method = 'average'),
@@ -98,38 +98,6 @@ map_df(lista_cl, function(x) {
 #' 
 #' 2. Número óptimo de grupos. Haré los cálculos para UPGMA y Ward, y luego explico en qué consisten los resultados.
 #' 
-#' Para UPGMA:
-#' 
-anch_sil_upgma <- calcular_anchuras_siluetas(
-  mc_orig = mi_fam, 
-  distancias = mi_fam_norm_d, 
-  cluster = lista_cl$cl_upgma)
-anch_sil_upgma
-#' 
-#' El objeto `anchuras_siluetas` de la lista `anch_sil_upgma` te muestra un vector con los promedios de anchuras de siluetas para todas las posibles particiones con sentido. Al ser promedios, lo que reflejan es el valor de las siluetas de manera general. Si para una partición dada, se registran promedios de siluetas grandes, se interpreta entonces que habrá muchos casos de grupos claramente aislados para dicha partición.
-#' 
-#' Igualmente, el objeto `n_grupos_optimo` te indica cuál es el número óptimo de clústers a crear, es decir, en cuántos grupos cortar el árbol. Esto se determina programáticamente por medio de la posición que ocupa el promedio más alto, que en este caso es la posición dos. Sin embargo, te recomiendo NO usar este número a ciegas. Verifica si el valor máximo, que en este caso ocupa la posición dos, se diferencia o se parece mucho a los de su entorno, por ejemplo, al valor de la posición 3. En mi caso, el valor de anchura promedio de la posición 2 se diferencia, por mucho, del de la posición 3. Por lo tanto, puedo elegir con seguridad 2 como número de clústers óptimo.
-#' 
-#' Haré el gráfico de dendrograma, aunque nota que en este caso primero reordenaré los sitios con la función `reorder.hclust`, de tal suerte que los sitios más próximos en términos de distancias aparecerán próximos también en el dendrograma.
-#' 
-u_dend_reord <- reorder.hclust(lista_cl$cl_upgma, mi_fam_norm_d)
-plot(u_dend_reord, hang = -1)
-rect.hclust(
-  tree = u_dend_reord,
-  k = anch_sil_upgma$n_grupos_optimo)
-#' 
-#' Ahora compararé el dendrograma con el mapa de calor en un mismo gráfico, colocando los dendrogramas en los márgenes del gráfico. Verificaré si el número de grupos hace sentido, recordando los grupos que inicialmente identifiqué.
-#' 
-heatmap(
-  as.matrix(mi_fam_norm_d),
-  Rowv = as.dendrogram(u_dend_reord),
-  symm = TRUE,
-  margin = c(3, 3),
-  col = rev(cm.colors(4))
-)
-#' 
-#' En general, hay dos grupos, uno grande y otro pequeño, y parece haber un tercero en el mapa de calor. El grupo grande ocupa la mancha rosa central que se extiende hasta el borde inferior derecho, y el grupo pequeño ocupa la posición superior derecha. Aunque los promedios de anchura de siluetas sugerían usar 2 grupos, el mapa de calor parece sugerir que existe un tercer grupo entre los dos anteriores, representado por los sitios 18, 8,..., 7,..., 19.
-#' 
 #' Mostraré el resultado para Ward:
 #' 
 anch_sil_ward <- calcular_anchuras_siluetas(
@@ -145,11 +113,6 @@ plot(w_dend_reord, hang = -1)
 rect.hclust(
   tree = w_dend_reord,
   k = anch_sil_ward$n_grupos_optimo)
-
-plot(w_dend_reord, hang = -1)
-rect.hclust(
-  tree = w_dend_reord,
-  k = anch_sil_ward$n_grupos_optimo + 1)
 #' 
 #' Comparando el dendrograma con el mapa de calor. Verificar si el número de grupos hace sentido.
 #' 
@@ -205,20 +168,6 @@ heatmap(
 #' 
 #' Ten presente que, al realizar remuestreo por *bootstrap* multiescalar, cada corrida puede arrojar resultados diferentes, dado que el procedimiento implica remuestreo. No obstante, los patrones indiscutibles estarán siempre presentes en cada corrida. Para garantizar reproducibilidad, utilicé el argumento `iseed` en la función `pvclust`.
 #' 
-#' #### UPGMA
-#' 
-cl_pvclust_upgma <-
-  pvclust(t(mi_fam_norm),
-          method.hclust = "average",
-          method.dist = "euc",
-          iseed = 91, # Resultado reproducible
-          parallel = TRUE)
-# Añadir los valores de p
-plot(cl_pvclust_upgma, hang = -1)
-# Añadir rectángulos a los grupos significativos
-lines(cl_pvclust_upgma)
-pvrect(cl_pvclust_upgma, alpha = 0.91, border = 4)
-#' 
 #' #### Ward
 #' 
 cl_pvclust_ward <-
@@ -262,12 +211,8 @@ pvrect(cl_pvclust_compl, alpha = 0.91, border = 4)
 #' 
 #' Para conservar las clasificaciones de grupos de sitios anteriores, crearé un vector con el identificador del grupo al que pertenece cada grupo. Es importante imprimir el resultado, para confirmar que los sitios estén ordenados según aparecen en las matrices de comunidad y ambiental.
 #' 
-#' UPGMA:
-(grupos_upgma_k2 <- as.factor(cutree(lista_cl$cl_upgma, k = 2)))
 #' 
 #' En este caso, los sitios 1 y 2 pertenecen al grupo 1, los sitios 3 al 6 pertenecen al grupo 2, nuevamente, del 7 al 9 pertenecen al grupo 1, el sitio 10 pertenece al grupo 2, y así sucesivamente. Preguntaré cuántos sitios hay en cada grupo mediante la función `table`:
-#' 
-table(grupos_upgma_k2)
 #' 
 #' Nota lo desiguales que son estos grupos, un efecto esperado dado el alto grado de autocorrelación espacial que tienen entre sí los cuadros de 1 Ha de BCI. Este desequilibrio afecta las inferencias que realizaré en *scripts* posteriores, pero para fines didácticos los realizaré de todas maneras. No obstante, en tu caso, esperaría y desearía que tu familia asignada ofrezca resultados de agrupamiento más equilibrados.
 #' 
@@ -276,9 +221,6 @@ table(grupos_upgma_k2)
 (grupos_ward_k2 <- as.factor(cutree(lista_cl$cl_ward, k = 2)))
 table(grupos_ward_k2)
 #'
-(grupos_ward_k3 <- as.factor(cutree(lista_cl$cl_ward, k = 3)))
-table(grupos_ward_k3)
-#'
 #' Complete:
 #' 
 (grupos_compl_k2 <- as.factor(cutree(lista_cl$cl_complete, k = 2)))
@@ -286,9 +228,7 @@ table(grupos_compl_k2)
 #'
 #' Guardaré estos vectores en archivos para reutilizarlos en *scripts* posteriores:
 #' 
-saveRDS(grupos_upgma_k2, 'grupos_upgma_k2.RDS')
 saveRDS(grupos_ward_k2, 'grupos_ward_k2.RDS')
-saveRDS(grupos_ward_k3, 'grupos_ward_k3.RDS')
 saveRDS(grupos_compl_k2, 'grupos_compl_k2.RDS')
 #' 
 #' Evita usar este, y cualquier otro procedimiento, de manera mecánica. En tu caso, quizá tengas que cortar tus dendrogramas en más o menos grupos de sitios. También podría resultar que alguno de dichos métodos, o ambos, sean irrelevante para tu caso, por lo que probablemente tendrás que elegir otro que haga sentido ecológico a tus datos (por ejemplo, *complete*).

@@ -28,8 +28,6 @@ mi_fam <- mc_chrys
   nombre_original = colnames(mc_chrys),
   colnames(mi_fam)))
 bci_env_grid %>% tibble
-grupos_upgma_k2 <- readRDS('grupos_upgma_k2.RDS')
-table(grupos_upgma_k2)
 grupos_ward_k2 <- readRDS('grupos_ward_k2.RDS')
 table(grupos_ward_k2)
 grupos_compl_k2 <- readRDS('grupos_compl_k2.RDS')
@@ -176,8 +174,6 @@ legend(
 #' 
 #' Si hago lo mismo, pero usando mi análisis de agrupamiento anterior (*scripts* "aa_analisis_de_agrupamiento_*"), no obtengo resultados consistentes, al menos en mi caso.
 #' 
-#(mi_cluster_anterior <- grupos_upgma_k2)
-#(mi_cluster_anterior <- grupos_ward_k3)
 (mi_cluster_anterior <- grupos_compl_k2)
 (mi_cluster_anterior_l <- levels(mi_cluster_anterior))
 (mi_cluster_anterior_l_seq <- 1:length(mi_cluster_anterior_l))
